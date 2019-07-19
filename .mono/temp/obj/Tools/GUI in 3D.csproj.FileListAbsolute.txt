@@ -4,3 +4,9 @@ D:\Code\godot\tests\.mono\temp\obj\Tools\GUI in 3D.csprojAssemblyReference.cache
 D:\Code\godot\tests\.mono\temp\obj\Tools\GUI in 3D.csproj.CoreCompileInputs.cache
 D:\Code\godot\tests\.mono\temp\obj\Tools\GUI in 3D.dll
 D:\Code\godot\tests\.mono\temp\obj\Tools\GUI in 3D.pdb
+D:\Code\godot\pigsSSJomt\.mono\temp\bin\Tools\GUI in 3D.dll
+D:\Code\godot\pigsSSJomt\.mono\temp\bin\Tools\GUI in 3D.pdb
+D:\Code\godot\pigsSSJomt\.mono\temp\obj\Tools\GUI in 3D.csprojAssemblyReference.cache
+D:\Code\godot\pigsSSJomt\.mono\temp\obj\Tools\GUI in 3D.csproj.CoreCompileInputs.cache
+D:\Code\godot\pigsSSJomt\.mono\temp\obj\Tools\GUI in 3D.dll
+D:\Code\godot\pigsSSJomt\.mono\temp\obj\Tools\GUI in 3D.pdb

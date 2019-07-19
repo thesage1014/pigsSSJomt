@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="GUI in 3D"
-run/main_scene="res://Gui_in_3D.tscn"
+run/main_scene="res://sticky.tscn"
 config/icon="res://icon.png"
 
 [gdnative]
