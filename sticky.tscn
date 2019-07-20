@@ -1418,8 +1418,17 @@ position = Vector2( 695.063, 493.638 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="Timer" type="Timer" parent="."]
+pause_mode = 2
 wait_time = 10.0
 autostart = true
+
+[node name="Panel" type="Panel" parent="Timer"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Label" type="Label" parent="Timer/Panel"]
+margin_right = 40.0
+margin_bottom = 14.0
 
 [node name="Fighter1" type="Node2D" parent="."]
 position = Vector2( -199.445, -6.64807 )
@@ -1464,6 +1473,7 @@ align = 1
 valign = 1
 
 [node name="Skeleton" type="Skeleton2D" parent="Fighter1"]
+editor/display_folded = true
 position = Vector2( -9.35941, -478.97 )
 
 [node name="Torso" type="AnimatedSprite" parent="Fighter1/Skeleton"]
@@ -1614,6 +1624,7 @@ script = ExtResource( 1 )
 playerNumber = 2
 
 [node name="AttackRoller" type="Panel" parent="Fighter2"]
+editor/display_folded = true
 margin_left = 402.53
 margin_top = -595.648
 margin_right = 672.53
@@ -1653,6 +1664,7 @@ align = 1
 valign = 1
 
 [node name="Skeleton" type="Skeleton2D" parent="Fighter2"]
+editor/display_folded = true
 position = Vector2( -9.35941, -478.97 )
 
 [node name="Torso" type="AnimatedSprite" parent="Fighter2/Skeleton"]
@@ -1795,5 +1807,3 @@ __meta__ = {
 anims/punchL = SubResource( 7 )
 anims/punchR = SubResource( 8 )
 anims/rest = SubResource( 9 )
-[connection signal="on_update_roller" from="Fighter1" to="Fighter1/AttackRoller" method="_on_Fighter1_on_update_roller"]
-[connection signal="on_update_roller" from="Fighter2" to="Fighter2/AttackRoller" method="_on_Fighter1_on_update_roller"]

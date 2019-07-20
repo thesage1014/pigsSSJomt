@@ -3,8 +3,8 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var nextMove = 0
-var moveCount = 0
+var nextMove = 1
+#var moveCount = 0
 var MoveList = [
 				'rest',
 				'punchR',
@@ -39,7 +39,7 @@ func _input(event):
 		if usedOnce.has(MoveList[nextMove]):
 			usedOnce.remove(nextMove)
 			MoveList.remove(nextMove)
-			#moveCount = MoveList.size() -1
+
 		else :
 			usedOnce.append(MoveList[nextMove])
 			print(usedOnce)
@@ -56,8 +56,9 @@ func _input(event):
 		CheckLength()
 		print(MoveList[nextMove])
 
-		
-	emit_signal("on_update_roller",MoveList,nextMove)
+	CheckLength()
+	if MoveList.size() > 0 :
+		emit_signal("on_update_roller",MoveList,nextMove)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func CheckLength():
@@ -66,11 +67,11 @@ func CheckLength():
 	elif nextMove < 0:
 		nextMove = MoveList.size()-1
 	pass
-func _process(delta):
+#func _process(delta):
 	#if !nextMove:
 		#nextMove = 0
-	if nextMove > MoveList.size()-1:
-		nextMove = 0
-	elif nextMove < 0:
-		nextMove = MoveList.size()-1
-	pass
+	#if nextMove > MoveList.size()-1:
+	#	nextMove = 0
+	#elif nextMove < 0:
+	#	nextMove = MoveList.size()-1
+	#pass
