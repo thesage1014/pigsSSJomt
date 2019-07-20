@@ -9,8 +9,11 @@ var activeAttack = "Hi Punch"
 func _ready():
 	pass # Replace with function body.
 
-func updateRoller(attacks, active):
-	get_node("ActiveAttack").text = attacks[active]
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_Fighter1_on_update_roller(newAttack):
+	activeAttack = newAttack
+	get_node("ActiveAttack").text = activeAttack
