@@ -738,7 +738,7 @@ frames = ExtResource( 2 )
 
 [node name="ArmR" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso"]
 position = Vector2( -644.386, 163.503 )
-rotation = 0.267145
+rotation = 0.440388
 frames = ExtResource( 2 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
@@ -749,7 +749,7 @@ __meta__ = {
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso/ArmR"]
 position = Vector2( 1100.45, 36.2783 )
-rotation = -0.403462
+rotation = 2.00798
 frames = ExtResource( 2 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
@@ -758,7 +758,7 @@ __meta__ = {
 }
 
 [node name="Position2D" type="Position2D" parent="Fighter1/Skeleton2D/Torso/ArmR/AnimatedSprite4"]
-position = Vector2( 980.424, 39.3997 )
+position = Vector2( 1041.48, 33.3777 )
 rotation = -13.371
 __meta__ = {
 "_edit_bone_": true
@@ -895,4 +895,4 @@ custom_fonts/font = ExtResource( 7 )
 text = "High Punch"
 align = 1
 valign = 1
-[connection signal="on_update_roller" from="Fighter1" to="AttackRoller" method="_on_Fighter1_on_update_roller" binds= [ "attack" ]]
+[connection signal="on_update_roller" from="Fighter1" to="AttackRoller" method="_on_Fighter1_on_update_roller"]

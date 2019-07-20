@@ -39,7 +39,7 @@ func _input(event):
 		nextMove -= 1
 		CheckLength()
 		print(MoveList[nextMove])
-	emit_signal("on_update_roller")
+	emit_signal("on_update_roller",MoveList[nextMove])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func CheckLength():
