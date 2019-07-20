@@ -30,7 +30,7 @@ func _input(event):
 	if event.is_action_pressed("ui_select"):
 		print("Player 1 picked ", MoveList[nextMove])
 		#should probably call a function on the game control node and pass the selected move so it can trigger the timer and then play the animation?
-		
+		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove]
 	elif event.is_action_released("ui_up"):
 		nextMove += 1
 		CheckLength()
@@ -39,7 +39,8 @@ func _input(event):
 		nextMove -= 1
 		CheckLength()
 		print(MoveList[nextMove])
-	emit_signal("on_update_roller",MoveList[nextMove])
+		
+	emit_signal("on_update_roller",MoveList,nextMove)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func CheckLength():

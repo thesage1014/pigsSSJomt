@@ -14,6 +14,14 @@ func _ready():
 #	pass
 
 
-func _on_Fighter1_on_update_roller(newAttack):
-	activeAttack = newAttack
+func _on_Fighter1_on_update_roller(attacks, newAttack):
+	activeAttack = attacks[newAttack]
 	get_node("ActiveAttack").text = activeAttack
+	if(newAttack >= attacks.size()-1):
+		get_node("UpAttack").text = ""
+	else:
+		get_node("UpAttack").text = attacks[newAttack+1]
+	if(newAttack <= 0):
+		get_node("DownAttack").text = ""
+	else:
+		get_node("DownAttack").text = attacks[newAttack-1]
