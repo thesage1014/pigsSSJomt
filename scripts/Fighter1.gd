@@ -16,21 +16,26 @@ var MoveList = [
 				]
 var usedOnce = []
 export var playerNumber = 1
+var btn = []
 signal on_update_roller
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#moveCount = MoveList.size() -1 # for some reason it counts size from 1 but calls array members from 0, so calling array[array.size] causes a crash
-
+	
 	#print("move count: ", moveCount)
 	
+	if playerNumber == 1 :
+		btn = ['p1_a','p1_b','p1_c']
+	elif playerNumber == 2:
+		btn = ['p2_a','p2_b','p2_c']
 	pass
 
 func _input(event):
+	
 
 
-
-	if event.is_action_pressed("ui_select"):
+	if event.is_action_pressed(btn[0]):
 		if usedOnce.has(MoveList[nextMove]):
 			usedOnce.remove(nextMove)
 			MoveList.remove(nextMove)
@@ -42,11 +47,11 @@ func _input(event):
 			#should probably call a function on the game control node and pass the selected move so it can trigger the timer and then play the animation?
 			get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove]
 
-	elif event.is_action_released("ui_up"):
+	elif event.is_action_released(btn[1]):
 		nextMove += 1
 		CheckLength()
 		print(MoveList[nextMove])
-	elif event.is_action_released("ui_down"):
+	elif event.is_action_released(btn[2]):
 		nextMove -= 1
 		CheckLength()
 		print(MoveList[nextMove])
