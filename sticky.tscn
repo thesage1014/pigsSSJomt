@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scripts/Fighter1.gd" type="Script" id=1]
 [ext_resource path="res://assets/armstick.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://assets/legstick1.tres" type="SpriteFrames" id=3]
 [ext_resource path="res://assets/stick3.png" type="Texture" id=4]
 [ext_resource path="res://assets/nest.png" type="Texture" id=5]
+[ext_resource path="res://scripts/AttackRoller.gd" type="Script" id=6]
+[ext_resource path="res://assets/new_dynamicfont.tres" type="DynamicFont" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -728,6 +730,7 @@ script = ExtResource( 1 )
 position = Vector2( -9.35941, -478.97 )
 
 [node name="Torso" type="AnimatedSprite" parent="Fighter1/Skeleton2D"]
+editor/display_folded = true
 position = Vector2( 10.9721, 96.4077 )
 rotation = 1.61277
 scale = Vector2( 0.148534, 0.148534 )
@@ -755,15 +758,15 @@ __meta__ = {
 }
 
 [node name="Position2D" type="Position2D" parent="Fighter1/Skeleton2D/Torso/ArmR/AnimatedSprite4"]
-position = Vector2( 1080.3, 36.2786 )
-rotation = -23.3558
+position = Vector2( 980.424, 39.3997 )
+rotation = -13.371
 __meta__ = {
 "_edit_bone_": true
 }
 
 [node name="ArmL" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso"]
 position = Vector2( -654.04, -19.9221 )
-rotation = 31.2191
+rotation = 31.72
 frames = ExtResource( 2 )
 offset = Vector2( 665.285, -73.5525 )
 __meta__ = {
@@ -773,7 +776,7 @@ __meta__ = {
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso/ArmL"]
 position = Vector2( 1045.15, -31.2649 )
-rotation = 19.1539
+rotation = 21.089
 frames = ExtResource( 2 )
 offset = Vector2( 665.285, -73.5525 )
 __meta__ = {
@@ -782,7 +785,7 @@ __meta__ = {
 
 [node name="Position2D" type="Position2D" parent="Fighter1/Skeleton2D/Torso/ArmL/AnimatedSprite4"]
 position = Vector2( 1222.24, -51.3916 )
-rotation = 5.6627
+rotation = 3.25267
 __meta__ = {
 "_edit_bone_": true
 }
@@ -818,7 +821,7 @@ __meta__ = {
 
 [node name="LegL" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso"]
 position = Vector2( 551.068, -107.444 )
-rotation = 0.172097
+rotation = 0.223352
 frames = ExtResource( 3 )
 offset = Vector2( 665.285, 49.478 )
 flip_v = true
@@ -829,7 +832,7 @@ __meta__ = {
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso/LegL"]
 position = Vector2( 1045.15, -31.2649 )
-rotation = 18.2277
+rotation = 18.1191
 frames = ExtResource( 2 )
 offset = Vector2( 665.285, -73.5525 )
 __meta__ = {
@@ -838,7 +841,7 @@ __meta__ = {
 
 [node name="Position2D" type="Position2D" parent="Fighter1/Skeleton2D/Torso/LegL/AnimatedSprite4"]
 position = Vector2( 1222.24, -51.3916 )
-rotation = 6.28235
+rotation = 6.31087
 __meta__ = {
 "_edit_bone_": true
 }
@@ -866,3 +869,30 @@ __meta__ = {
 anims/punchL = SubResource( 3 )
 anims/punchR = SubResource( 4 )
 anims/rest = SubResource( 5 )
+
+[node name="AttackRoller" type="Panel" parent="."]
+margin_left = 205.301
+margin_top = -589.0
+margin_right = 475.301
+margin_bottom = -507.0
+script = ExtResource( 6 )
+
+[node name="ActiveAttack" type="Label" parent="AttackRoller"]
+margin_right = 271.0
+margin_bottom = 81.0
+rect_pivot_offset = Vector2( -2515.43, -178.276 )
+custom_fonts/font = ExtResource( 7 )
+text = "High Punch"
+align = 1
+valign = 1
+percent_visible = -0.111111
+
+[node name="ActiveAttack2" type="Label" parent="AttackRoller"]
+visible = false
+margin_right = 271.0
+margin_bottom = 81.0
+rect_pivot_offset = Vector2( -2515.43, -178.276 )
+custom_fonts/font = ExtResource( 7 )
+text = "High Punch"
+align = 1
+valign = 1

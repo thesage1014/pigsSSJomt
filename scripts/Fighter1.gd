@@ -5,7 +5,6 @@ extends Node2D
 # var b = "text"
 var nextMove = 0
 var moveCount = 0
-
 var MoveList = [
 				'rest',
 				'punchR',
@@ -15,19 +14,19 @@ var MoveList = [
 				'kickL',
 				'grab?',
 				]
-	
+signal on_update_roller
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	moveCount = MoveList.size() -1 # for some reason it counts size from 1 but calls array members from 0, so calling array[array.size] causes a crash
-	
+
 	print("move count: ", moveCount)
-	pass 
+	pass
 
 func _input(event):
-	
-	
-	
+
+
+
 	if event.is_action_pressed("ui_select"):
 		print("Player 1 picked ", MoveList[nextMove])
 		#should probably call a function on the game control node and pass the selected move so it can trigger the timer and then play the animation?
@@ -40,7 +39,8 @@ func _input(event):
 		nextMove -= 1
 		CheckLength()
 		print(MoveList[nextMove])
-	
+	emit_signal("on_update_roller")
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func CheckLength():
 	if nextMove > moveCount:
