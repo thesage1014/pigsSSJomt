@@ -5,8 +5,10 @@ extends Panel
 # var b = "text"
 class_name AttackRoller1
 var activeAttack = "Hi Punch"
+onready var player = get_parent()
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	player.connect("on_update_roller", self, "update_roller")
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,9 +16,11 @@ func _ready():
 #	pass
 
 
-func _on_Fighter1_on_update_roller(attacks, newAttack):
+func update_roller(attacks, newAttack):
 	activeAttack = attacks[newAttack]
+	
 	get_node("ActiveAttack").text = activeAttack
+	#print(get_node("ActiveAttack").get_parent().name)
 	if(newAttack >= attacks.size()-1):
 		get_node("UpAttack").text = ""
 	else:
