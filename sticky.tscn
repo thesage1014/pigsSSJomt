@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/armstick.tres" type="SpriteFrames" id=1]
-[ext_resource path="res://scripts/puncher.cs" type="Script" id=2]
+[ext_resource path="res://scripts/Fighter1.gd" type="Script" id=1]
+[ext_resource path="res://assets/armstick.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://assets/legstick1.tres" type="SpriteFrames" id=3]
 [ext_resource path="res://assets/stick3.png" type="Texture" id=4]
 [ext_resource path="res://assets/nest.png" type="Texture" id=5]
@@ -22,8 +22,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="Animation" id=5]
-resource_name = "punchL"
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Torso/ArmL/AnimatedSprite4/Position2D:position")
 tracks/0/interp = 1
@@ -97,8 +96,7 @@ tracks/5/keys = {
 "values": [ 1817.42, 1870.51, 1788.72 ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "punchR"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Torso/ArmR/AnimatedSprite4/Position2D:position")
 tracks/0/interp = 1
@@ -172,8 +170,7 @@ tracks/5/keys = {
 "values": [ 25.2324, 72.7887, 15.3063 ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "rest"
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Torso/LegR:position")
 tracks/0/interp = 1
@@ -715,25 +712,29 @@ tracks/44/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[node name="Spatial" type="Spatial"]
-
-[node name="Node2D" type="Node2D" parent="."]
+[node name="World" type="Node2D"]
 position = Vector2( 695.063, 493.638 )
 scale = Vector2( 0.5, 0.5 )
 
-[node name="Skeleton2D" type="Skeleton2D" parent="Node2D"]
+[node name="Fighter1" type="Node2D" parent="."]
+script = ExtResource( 1 )
+
+[node name="Skeleton2D" type="Skeleton2D" parent="Fighter1"]
+editor/display_folded = true
 position = Vector2( -9.35941, -478.97 )
 
-[node name="Torso" type="AnimatedSprite" parent="Node2D/Skeleton2D"]
+[node name="Torso" type="AnimatedSprite" parent="Fighter1/Skeleton2D"]
+editor/display_folded = true
 position = Vector2( 10.9721, 96.4077 )
 rotation = 1.61277
 scale = Vector2( 0.148534, 0.148534 )
-frames = ExtResource( 1 )
+frames = ExtResource( 2 )
 
-[node name="ArmR" type="AnimatedSprite" parent="Node2D/Skeleton2D/Torso"]
+[node name="ArmR" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso"]
+editor/display_folded = true
 position = Vector2( -644.386, 163.503 )
 rotation = 0.440388
-frames = ExtResource( 1 )
+frames = ExtResource( 2 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
 __meta__ = {
@@ -741,51 +742,52 @@ __meta__ = {
 "_edit_ik_": true
 }
 
-[node name="AnimatedSprite4" type="AnimatedSprite" parent="Node2D/Skeleton2D/Torso/ArmR"]
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso/ArmR"]
 position = Vector2( 1100.45, 36.2783 )
 rotation = 2.00798
-frames = ExtResource( 1 )
+frames = ExtResource( 2 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
 __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="Position2D" type="Position2D" parent="Node2D/Skeleton2D/Torso/ArmR/AnimatedSprite4"]
+[node name="Position2D" type="Position2D" parent="Fighter1/Skeleton2D/Torso/ArmR/AnimatedSprite4"]
 position = Vector2( 1080.3, 36.2786 )
 rotation = -13.371
 __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="ArmL" type="AnimatedSprite" parent="Node2D/Skeleton2D/Torso"]
+[node name="ArmL" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso"]
+editor/display_folded = true
 position = Vector2( -654.04, -19.9221 )
 rotation = 31.72
-frames = ExtResource( 1 )
+frames = ExtResource( 2 )
 offset = Vector2( 665.285, -73.5525 )
 __meta__ = {
 "_edit_bone_": true,
 "_edit_ik_": true
 }
 
-[node name="AnimatedSprite4" type="AnimatedSprite" parent="Node2D/Skeleton2D/Torso/ArmL"]
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso/ArmL"]
 position = Vector2( 1045.15, -31.2649 )
 rotation = 21.089
-frames = ExtResource( 1 )
+frames = ExtResource( 2 )
 offset = Vector2( 665.285, -73.5525 )
 __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="Position2D" type="Position2D" parent="Node2D/Skeleton2D/Torso/ArmL/AnimatedSprite4"]
+[node name="Position2D" type="Position2D" parent="Fighter1/Skeleton2D/Torso/ArmL/AnimatedSprite4"]
 position = Vector2( 1222.24, -51.3916 )
 rotation = 3.25267
-script = ExtResource( 2 )
 __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="LegR" type="AnimatedSprite" parent="Node2D/Skeleton2D/Torso"]
+[node name="LegR" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso"]
+editor/display_folded = true
 position = Vector2( 558.182, 152.751 )
 rotation = 0.518609
 frames = ExtResource( 3 )
@@ -796,24 +798,25 @@ __meta__ = {
 "_edit_ik_": true
 }
 
-[node name="AnimatedSprite4" type="AnimatedSprite" parent="Node2D/Skeleton2D/Torso/LegR"]
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso/LegR"]
 position = Vector2( 1100.45, 36.2783 )
 rotation = -1.0325
-frames = ExtResource( 1 )
+frames = ExtResource( 2 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
 __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="Position2D" type="Position2D" parent="Node2D/Skeleton2D/Torso/LegR/AnimatedSprite4"]
+[node name="Position2D" type="Position2D" parent="Fighter1/Skeleton2D/Torso/LegR/AnimatedSprite4"]
 position = Vector2( 1080.3, 36.2786 )
 rotation = -22.9987
 __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="LegL" type="AnimatedSprite" parent="Node2D/Skeleton2D/Torso"]
+[node name="LegL" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso"]
+editor/display_folded = true
 position = Vector2( 551.068, -107.444 )
 rotation = 0.223352
 frames = ExtResource( 3 )
@@ -824,23 +827,24 @@ __meta__ = {
 "_edit_ik_": true
 }
 
-[node name="AnimatedSprite4" type="AnimatedSprite" parent="Node2D/Skeleton2D/Torso/LegL"]
+[node name="AnimatedSprite4" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso/LegL"]
 position = Vector2( 1045.15, -31.2649 )
 rotation = 18.1191
-frames = ExtResource( 1 )
+frames = ExtResource( 2 )
 offset = Vector2( 665.285, -73.5525 )
 __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="Position2D" type="Position2D" parent="Node2D/Skeleton2D/Torso/LegL/AnimatedSprite4"]
+[node name="Position2D" type="Position2D" parent="Fighter1/Skeleton2D/Torso/LegL/AnimatedSprite4"]
 position = Vector2( 1222.24, -51.3916 )
 rotation = 6.31087
 __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="neck" type="AnimatedSprite" parent="Node2D/Skeleton2D/Torso"]
+[node name="neck" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso"]
+editor/display_folded = true
 position = Vector2( -664.656, 73.7129 )
 rotation = -2.90264
 scale = Vector2( 0.86162, 0.86162 )
@@ -851,7 +855,7 @@ __meta__ = {
 "_edit_ik_": true
 }
 
-[node name="head" type="AnimatedSprite" parent="Node2D/Skeleton2D/Torso/neck"]
+[node name="head" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso/neck"]
 position = Vector2( 686.422, -63.3096 )
 rotation = 1.29597
 frames = SubResource( 2 )
@@ -859,8 +863,7 @@ __meta__ = {
 "_edit_bone_": true
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/Skeleton2D"]
-playback_process_mode = 0
-anims/punchL = SubResource( 5 )
-anims/punchR = SubResource( 3 )
-anims/rest = SubResource( 4 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fighter1/Skeleton2D"]
+anims/punchL = SubResource( 3 )
+anims/punchR = SubResource( 4 )
+anims/rest = SubResource( 5 )

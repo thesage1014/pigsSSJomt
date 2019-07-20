@@ -15,13 +15,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="GUI in 3D"
-run/main_scene="res://sticky.tscn"
+config/name="pigsSSJomt"
 config/icon="res://icon.png"
-
-[gdnative]
-
-singletons=[  ]
 
 [rendering]
 
