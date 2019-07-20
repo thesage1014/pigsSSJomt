@@ -104,10 +104,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1080.3, 36.2786 ), Vector2( 1080.3, 36.2786 ), Vector2( 1080.3, 36.2786 ) ]
+"values": [ Vector2( 1080.3, 36.2786 ), Vector2( 1080.3, 36.2786 ), Vector2( 943.12, 43.079 ), Vector2( 1080.3, 36.2786 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Torso/ArmR/AnimatedSprite4/Position2D:rotation_degrees")
@@ -116,10 +116,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -766.103, -1079.35, -1338.19 ]
+"values": [ -766.103, -1079.35, -766.103, -1338.19 ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Torso/ArmR/AnimatedSprite4:position")
@@ -128,10 +128,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1100.45, 36.2783 ), Vector2( 1100.45, 36.2783 ), Vector2( 1100.45, 36.2783 ) ]
+"values": [ Vector2( 1100.45, 36.2783 ), Vector2( 1100.45, 36.2783 ), Vector2( 1100.45, 36.2783 ), Vector2( 1100.45, 36.2783 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Torso/ArmR/AnimatedSprite4:rotation_degrees")
@@ -140,10 +140,10 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 115.049, 19.8733, -23.1167 ]
+"values": [ 115.049, 19.8733, 115.049, -23.1167 ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Torso/ArmR:position")
@@ -152,10 +152,10 @@ tracks/4/loop_wrap = true
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -644.386, 163.503 ), Vector2( -644.386, 163.503 ), Vector2( -644.386, 163.503 ) ]
+"values": [ Vector2( -644.386, 163.503 ), Vector2( -644.386, 163.503 ), Vector2( -644.386, 163.503 ), Vector2( -644.386, 163.503 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Torso/ArmR:rotation_degrees")
@@ -164,10 +164,10 @@ tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.5, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ 25.2324, 72.7887, 15.3063 ]
+"values": [ 25.2324, 72.7887, 25.2324, 15.3063 ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -735,7 +735,7 @@ frames = ExtResource( 2 )
 
 [node name="ArmR" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso"]
 position = Vector2( -644.386, 163.503 )
-rotation = 0.440388
+rotation = 0.267145
 frames = ExtResource( 2 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
@@ -746,7 +746,7 @@ __meta__ = {
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Fighter1/Skeleton2D/Torso/ArmR"]
 position = Vector2( 1100.45, 36.2783 )
-rotation = 2.00798
+rotation = -0.403462
 frames = ExtResource( 2 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
@@ -755,8 +755,8 @@ __meta__ = {
 }
 
 [node name="Position2D" type="Position2D" parent="Fighter1/Skeleton2D/Torso/ArmR/AnimatedSprite4"]
-position = Vector2( 943.12, 43.079 )
-rotation = -13.371
+position = Vector2( 1080.3, 36.2786 )
+rotation = -23.3558
 __meta__ = {
 "_edit_bone_": true
 }
