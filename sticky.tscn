@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/Fighter1.gd" type="Script" id=1]
 [ext_resource path="res://AttackCard.tscn" type="PackedScene" id=2]
@@ -22,6 +22,84 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="Animation" id=9]
+resource_name = "kickL"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Torso/LegL/AnimatedSprite4/Position2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1222.24, -51.3916 ), Vector2( 1222.24, -51.3916 ), Vector2( 1222.24, -51.3916 ), Vector2( 1222.24, -51.3916 ), Vector2( 1222.24, -51.3916 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Torso/LegL/AnimatedSprite4/Position2D:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 365.262, 343.21, 265.652, 177.495, 365.262 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Torso/LegL/AnimatedSprite4:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 1018.76, 1005.18, 1054.87, 1143.81, 1018.76 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Torso/LegL:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 551.068, -107.444 ), Vector2( 551.068, -107.444 ), Vector2( 551.068, -107.444 ), Vector2( 551.068, -107.444 ), Vector2( 551.068, -107.444 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Torso/LegL:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 27.3578, 62.7981, 91.5469, 91.2235, 27.3578 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Torso/LegL/AnimatedSprite4:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( -0.3, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "kickR"
 
 [sub_resource type="Animation" id=3]
 tracks/0/type = "value"
@@ -1598,7 +1676,7 @@ __meta__ = {
 
 [node name="LegL" type="AnimatedSprite" parent="Fighter1/Skeleton/Torso"]
 position = Vector2( 551.068, -107.444 )
-rotation = 0.223352
+rotation = 0.477483
 frames = ExtResource( 4 )
 offset = Vector2( 665.285, 49.478 )
 flip_v = true
@@ -1609,7 +1687,7 @@ __meta__ = {
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Fighter1/Skeleton/Torso/LegL"]
 position = Vector2( 1045.15, -31.2649 )
-rotation = 18.1191
+rotation = 17.7807
 frames = ExtResource( 3 )
 offset = Vector2( 665.285, -73.5525 )
 __meta__ = {
@@ -1618,7 +1696,7 @@ __meta__ = {
 
 [node name="Position2D" type="Position2D" parent="Fighter1/Skeleton/Torso/LegL/AnimatedSprite4"]
 position = Vector2( 1222.24, -51.3916 )
-rotation = 6.31087
+rotation = 6.37502
 __meta__ = {
 "_edit_bone_": true
 }
@@ -1643,11 +1721,14 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Fighter1/Skeleton"]
+anims/kickL = SubResource( 9 )
+anims/kickR = SubResource( 10 )
 anims/punchL = SubResource( 3 )
 anims/punchR = SubResource( 4 )
 anims/rest = SubResource( 5 )
 
 [node name="Fighter2" type="Node2D" parent="."]
+editor/display_folded = true
 position = Vector2( -680.681, 0 )
 script = ExtResource( 1 )
 playerNumber = 2
