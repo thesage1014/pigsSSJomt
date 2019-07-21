@@ -16,6 +16,7 @@ var MoveList = [
 				]
 var usedOnce = []
 export var playerNumber = 1
+export var hitPoints = 100
 var btn = []
 signal on_update_roller
 
@@ -32,29 +33,29 @@ func _ready():
 	pass
 
 func _input(event):
-	
+	CheckLength()
+	print_debug(nextMove)
 
-
-	if event.is_action_pressed(btn[0]):
-		if usedOnce.has(MoveList[nextMove]):
+	if  MoveList.size() > 0 && event.is_action_pressed(btn[0]) :
+		if usedOnce.has(MoveList[nextMove]) :
 			usedOnce.remove(nextMove)
 			MoveList.remove(nextMove)
 
 		else :
 			usedOnce.append(MoveList[nextMove])
-			print(usedOnce)
-			print("Player 1 picked ", MoveList[nextMove])
+			#print(usedOnce)
+			#print("Player 1 picked ", MoveList[nextMove])
 			#should probably call a function on the game control node and pass the selected move so it can trigger the timer and then play the animation?
 			get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove]
 
 	elif event.is_action_released(btn[1]):
 		nextMove += 1
 		CheckLength()
-		print(MoveList[nextMove])
+		#print(MoveList[nextMove])
 	elif event.is_action_released(btn[2]):
 		nextMove -= 1
 		CheckLength()
-		print(MoveList[nextMove])
+		#print(MoveList[nextMove])
 
 	CheckLength()
 	if MoveList.size() > 0 :
