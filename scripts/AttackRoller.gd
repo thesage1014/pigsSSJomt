@@ -2,7 +2,7 @@ extends Panel
 
 # Declare member variables here. Examples:
 class_name AttackRoller1
-var activeAttack
+#var activeAttack
 onready var player = get_parent()
 
 
@@ -17,18 +17,23 @@ func _ready():
 #	pass
 
 
-func update_roller(attacks, newAttack):
-	if attacks.size() == 0 :
-		attacks.append("die i guess?")
-	activeAttack = attacks[newAttack]
-	
-	get_node("ActiveAttack").text = activeAttack
-	#print(get_node("ActiveAttack").get_parent().name)
-	if(newAttack >= attacks.size()-1):
-		get_node("UpAttack").text = attacks[0]
-	else:
-		get_node("UpAttack").text = attacks[newAttack+1]
-	if(newAttack <= 0):
-		get_node("DownAttack").text = attacks[attacks.size()-1]
-	else:
-		get_node("DownAttack").text = attacks[newAttack-1]
+#func update_roller(MoveList, MoveAmounts, nextAttack):
+#	var uiStrings = []
+#	for i in range(MoveList.size()) :
+#		uiStrings.append(MoveList[i] + str(MoveAmounts[i]))
+#	for i in uiStrings:
+#		#print_debug(i)
+#		pass
+#
+#	#get_node("ActiveAttack").text = activeAttackName # " "  activeAttackAmount
+#
+#	#print(get_node("ActiveAttack").get_parent().name)
+#	if(nextAttack >= MoveList.size()-1):
+#		get_node("UpAttack").text = MoveList[0]
+#	else:
+#		get_node("UpAttack").text = MoveList[nextAttack+1]
+#	if(nextAttack <= 0):
+#		#get_node("DownAttack").text = MoveList[nextAttack-1]
+#		pass
+#	else:
+#		get_node("DownAttack").text = MoveList[nextAttack-1]

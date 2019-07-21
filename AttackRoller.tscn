@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/new_dynamicfont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/new_dynamicfontdata.tres" type="DynamicFontData" id=3]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 30
 outline_color = Color( 0.54902, 0.54902, 0.54902, 0.392157 )
 font_data = ExtResource( 3 )
@@ -27,13 +27,18 @@ text = "High Punch"
 align = 1
 valign = 1
 
+[node name="Label" type="Label" parent="ActiveAttack"]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "One More Time!"
+
 [node name="UpAttack" type="Label" parent="."]
 margin_left = -0.368164
 margin_top = -79.9518
 margin_right = 270.632
 margin_bottom = 1.04825
 rect_pivot_offset = Vector2( -2515.43, -178.276 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 0.509804 )
 text = "High Punch"
 align = 1
@@ -45,7 +50,7 @@ margin_top = 84.1467
 margin_right = 270.632
 margin_bottom = 165.147
 rect_pivot_offset = Vector2( -2515.43, -178.276 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 0.509804 )
 text = "High Punch"
 align = 1
