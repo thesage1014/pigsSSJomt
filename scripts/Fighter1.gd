@@ -32,6 +32,7 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed(btn[0]) :
 		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove]
+		MoveAmounts[nextMove] += 1
 	elif event.is_action_released(btn[1]):
 		nextMove -= 1
 	elif event.is_action_released(btn[2]):
@@ -49,9 +50,15 @@ func getInArrayNumber(num):
 	return num
 
 func update_roller():
-	for i in range(MoveList.size()) :
-		attackCards[i].text = (MoveList[i] + str(MoveAmounts[i]))
-		if (i == nextMove): 
+	for i in range(MoveList.size()) :		
+		if (MoveAmounts[i] == 1):
+			attackCards[i].text = (MoveList[i] + " - One MOre Time!!")
+		elif (MoveAmounts[i] >= 0):
+			attackCards[i].text = (MoveList[i] + " - NO MOre Times!!")
+		else:		
+			attackCards[i].text = (MoveList[i] + str(MoveAmounts[i]))
+		
+		if (i == nextMove || MoveAmounts[i] >= 0): 
 			attackCards[i].add_color_override("font_color", Color("#ff0000"))
 		else : 
 			attackCards[i].add_color_override("font_color", Color("#333333"))
