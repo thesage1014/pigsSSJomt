@@ -25,7 +25,7 @@ func _ready():
 		btn = ['p2_a','p2_b','p2_c']
 	#attackCard.text = 'yes'
 	for i in range(MoveList.size()):
-		MoveAmounts.append(0)
+		MoveAmounts.append(1)
 		attackCards.append(get_child(i))
 	pass
 
@@ -54,7 +54,7 @@ func update_roller():
 		if (MoveAmounts[i] == 1):
 			attackCards[i].text = (MoveList[i] + " - One MOre Time!!")
 		elif (MoveAmounts[i] >= 0):
-			attackCards[i].text = (MoveList[i] + " - NO MOre Times!!")
+			attackCards[i].visible = false #text = (MoveList[i] + " - NO MOre Times!!")
 		else:		
 			attackCards[i].text = (MoveList[i] + str(MoveAmounts[i]))
 		
