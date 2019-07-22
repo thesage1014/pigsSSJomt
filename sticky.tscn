@@ -35,14 +35,15 @@ texture = ExtResource( 1 )
 expand = true
 
 [node name="Timer" type="Node2D" parent="."]
-position = Vector2( -324.276, -331.492 )
+position = Vector2( -361.108, -387.969 )
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="Timer"]
-margin_left = -563.297
-margin_top = -929.515
-margin_right = -172.297
-margin_bottom = -656.515
+visible = false
+margin_left = -236.716
+margin_top = -590.656
+margin_right = 154.284
+margin_bottom = -317.656
 grow_horizontal = 2
 custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0.109804, 0.12549, 0.121569, 1 )
@@ -52,6 +53,7 @@ align = 1
 valign = 1
 
 [node name="Spinner" type="Sprite" parent="Timer"]
+visible = false
 modulate = Color( 1, 1, 1, 0.486275 )
 material = ExtResource( 3 )
 position = Vector2( 0.088623, 1.14282 )
@@ -82,7 +84,7 @@ position = Vector2( -110.194, -6.64807 )
 position = Vector2( -618.799, -6.64807 )
 scale = Vector2( -1, 1 )
 playerNumber = 2
-[connection signal="on_timed_attack" from="Timer" to="Fighter2" method="_on_Timer_on_timed_attack"]
 [connection signal="on_timed_attack" from="Timer" to="Fighter1" method="_on_Timer_on_timed_attack"]
+[connection signal="on_timed_attack" from="Timer" to="Fighter2" method="_on_Timer_on_timed_attack"]
 [connection signal="on_player_selected" from="Fighter1" to="Timer" method="_on_Fighter1_on_player_selected"]
 [connection signal="on_player_selected" from="Fighter2" to="Timer" method="_on_Fighter2_on_player_selected"]

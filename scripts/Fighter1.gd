@@ -35,9 +35,9 @@ func _ready():
 	if playerNumber == 1 :
 		btn = ['p1_a','p1_b','p1_c']
 	elif playerNumber == 2:
-		get_node("Skeleton/Torso/neck/head").frame = 1
+#		get_node("Skeleton/Torso/neck/head").frame = 1
 		btn = ['p2_a','p2_b','p2_c']
-	pass
+	get_node("Skeleton/AnimationPlayer").current_animation = "rest"
 
 func _input(event):
 	#CheckLength()
@@ -87,7 +87,8 @@ func TakeDamage(damage):
 	hitPoints -= damage
 	return hitPoints
 	
-#func _process(delta):
+func _process(delta):
+	get_node("Skeleton/AnimationPlayer").playback_speed = rand_range(.7,1.4)
 	#if !nextMove:
 		#nextMove = 0
 	#if nextMove > MoveList.size()-1:

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/animations/rest.tres" type="Animation" id=1]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=1]
 resource_name = "blockHi"
 loop = true
 tracks/0/type = "value"
@@ -366,7 +366,7 @@ tracks/29/keys = {
 "values": [ -766.103, -479.816, -133.787 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=2]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Torso/LegL/AnimatedSprite4/Position2D:position")
 tracks/0/interp = 1
@@ -440,7 +440,7 @@ tracks/5/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=3]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Torso/LegR/AnimatedSprite4:rotation_degrees")
 tracks/0/interp = 1
@@ -526,7 +526,7 @@ tracks/6/keys = {
 "values": [ 366.897 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Torso/ArmL/AnimatedSprite4/Position2D:position")
 tracks/0/interp = 1
@@ -600,7 +600,7 @@ tracks/5/keys = {
 "values": [ 1817.42, 1870.51, 1852.81, 1788.72 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Torso/ArmR/AnimatedSprite4/Position2D:position")
 tracks/0/interp = 1
@@ -675,9 +675,9 @@ tracks/5/keys = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer"]
-anims/blockHi = SubResource( 3 )
-anims/kickL = SubResource( 4 )
-anims/kickR = SubResource( 5 )
-anims/punchL = SubResource( 6 )
-anims/punchR = SubResource( 7 )
+anims/blockHi = SubResource( 1 )
+anims/kickL = SubResource( 2 )
+anims/kickR = SubResource( 3 )
+anims/punchL = SubResource( 4 )
+anims/punchR = SubResource( 5 )
 anims/rest = ExtResource( 1 )
