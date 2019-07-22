@@ -9,7 +9,8 @@ onready var player = get_parent()
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player.connect("on_update_roller", self, "update_roller")
-	pass # Replace with function body.
+	if(player.playerNumber == 1):
+		rect_scale *= Vector2(-1,1)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
