@@ -3,6 +3,7 @@ extends Panel
 # Declare member variables here. Examples:
 class_name AttackRoller1
 var activeAttack
+var lastAttacks
 #onready var player = get_parent()
 export(NodePath) onready var player = get_node(player)
 
@@ -21,7 +22,7 @@ func _ready():
 
 func update_roller(attacks, newAttack):
 	activeAttack = attacks[newAttack][1]
-	
+	lastAttacks = attacks
 	get_node("ActiveAttack").text = activeAttack
 	#print(get_node("ActiveAttack").get_parent().name)
 	if(newAttack >= attacks.size()-1):

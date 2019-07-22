@@ -14,13 +14,14 @@ var MoveList = [
 				['kickL','Lo Kick',30]
 				]
 var WriggleAnim = ['wriggle','wriggle',0]
-var usedOnce = []
+var OMTAnim = ['One More Time','One More Time', 0]
 onready var hpStartSize = get_node("HealthBar").rect_size
 export(NodePath) onready var enemy = get_node(enemy)
 export var playerNumber = 1
 export var hitPoints = 100
 var btn = []
 var alreadySelected = false
+var alreadyResurrected = false
 signal on_update_roller
 signal on_player_selected
 signal on_send_attack
@@ -54,31 +55,37 @@ func _input(event):
 
 
 	CheckLength()
-	if MoveList.size() > 0 :
-		emit_signal("on_update_roller",MoveList,nextMove)
+	emit_signal("on_update_roller",MoveList,nextMove)
 
 func sendAttack():
 	CheckLength()
 	emit_signal("on_send_attack")
 	CheckLength()
 	alreadySelected = false
-	if MoveList.size()-1 > 0:
+	if MoveList.size() > 0:
 		print(MoveList)
-		enemy.TakeDamage(MoveList[nextMove][2])
+		if MoveList[0][0] == "One More Time":
+			MoveList = [
+				['punchR','Lo Punch',30],
+				['punchL','Hi Punch',50],
+				['blockHi','Hi Block',0],
+				['blockLo','Lo Block',0],
+				['kickR','Hi Kick',50],
+				['kickL','Lo Kick',30]
+				]
+			hitPoints += 100
+		else:
+			enemy.TakeDamage(MoveList[nextMove][2])
 		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove][0]
-		if usedOnce.has(MoveList[nextMove][0]) :
-			usedOnce.remove(MoveList[nextMove][0])
-			MoveList.remove(nextMove)
-
-		else :
-			usedOnce.append(MoveList[nextMove][0])
-	elif not usedOnce.has(['One More Time','One More Time', -100]):
-		MoveList.append(['One More Time','One More Time', -100])
-		
+		MoveList.remove(nextMove)
 	
 func CheckLength():
 	if MoveList.size() == 0:
-		MoveList.append(WriggleAnim)
+		if not alreadyResurrected:
+			MoveList.append(OMTAnim)
+			alreadyResurrected = true
+		else:
+			MoveList.append(WriggleAnim)
 	else:
 		if nextMove > MoveList.size()-1:
 			nextMove = 0
