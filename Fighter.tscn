@@ -702,10 +702,10 @@ script = ExtResource( 1 )
 [node name="AttackRoller" parent="." instance=ExtResource( 2 )]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 180.128
-margin_top = -529.289
-margin_right = 450.128
-margin_bottom = -447.289
+margin_left = 246.936
+margin_top = -487.094
+margin_right = 516.936
+margin_bottom = -405.094
 rect_pivot_offset = Vector2( 137.729, 40.8788 )
 
 [node name="Skeleton" type="Skeleton2D" parent="."]

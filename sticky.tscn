@@ -1,10 +1,19 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Fighter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/bg.jpg" type="Texture" id=1]
+[ext_resource path="res://Fighter.tscn" type="PackedScene" id=2]
 
 [node name="World" type="Node2D"]
 position = Vector2( 695.063, 493.638 )
 scale = Vector2( 0.5, 0.5 )
+
+[node name="bg" type="TextureRect" parent="."]
+margin_left = -1397.31
+margin_top = -1235.09
+margin_right = 663.691
+margin_bottom = 310.913
+texture = ExtResource( 1 )
+expand = true
 
 [node name="Timer" type="Timer" parent="."]
 pause_mode = 2
@@ -19,9 +28,10 @@ margin_bottom = 40.0
 margin_right = 40.0
 margin_bottom = 14.0
 
-[node name="Fighter1" parent="." instance=ExtResource( 1 )]
+[node name="Fighter1" parent="." instance=ExtResource( 2 )]
+position = Vector2( -106.394, -6.64807 )
 
-[node name="Fighter2" parent="." instance=ExtResource( 1 )]
-position = Vector2( -624.713, -6.64807 )
+[node name="Fighter2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -642.806, -6.64807 )
 scale = Vector2( -1, 1 )
 playerNumber = 2
