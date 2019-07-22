@@ -3,6 +3,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+
 var nextMove = 1
 #var moveCount = 0
 var MoveList = [
