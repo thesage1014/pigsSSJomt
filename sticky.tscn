@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/bg.jpg" type="Texture" id=1]
-[ext_resource path="res://Fighter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/BattleTimer.gd" type="Script" id=2]
+[ext_resource path="res://Fighter.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://assets/AUTUMN.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 120
+outline_size = 28
+outline_color = Color( 0.403922, 0.47451, 0.509804, 1 )
+use_mipmaps = true
+use_filter = true
+extra_spacing_top = -50
+font_data = SubResource( 1 )
 
 [node name="World" type="Node2D"]
 position = Vector2( 695.063, 493.638 )
@@ -15,23 +28,28 @@ margin_bottom = 310.913
 texture = ExtResource( 1 )
 expand = true
 
-[node name="Timer" type="Timer" parent="."]
-pause_mode = 2
-wait_time = 10.0
-autostart = true
+[node name="Timer" type="Node2D" parent="."]
+script = ExtResource( 2 )
 
-[node name="Panel" type="Panel" parent="Timer"]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="Label" type="Label" parent="Timer"]
+margin_left = -563.297
+margin_top = -929.515
+margin_right = -172.297
+margin_bottom = -656.515
+grow_horizontal = 2
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.109804, 0.12549, 0.121569, 1 )
+text = "Button
+mash!"
+align = 1
+valign = 1
 
-[node name="Label" type="Label" parent="Timer/Panel"]
-margin_right = 40.0
-margin_bottom = 14.0
-
-[node name="Fighter1" parent="." instance=ExtResource( 2 )]
+[node name="Fighter1" parent="." instance=ExtResource( 3 )]
 position = Vector2( -110.194, -6.64807 )
 
-[node name="Fighter2" parent="." instance=ExtResource( 2 )]
+[node name="Fighter2" parent="." instance=ExtResource( 3 )]
 position = Vector2( -618.799, -6.64807 )
 scale = Vector2( -1, 1 )
 playerNumber = 2
+[connection signal="on_timed_attack" from="Timer" to="Fighter2" method="_on_Timer_on_timed_attack"]
+[connection signal="on_timed_attack" from="Timer" to="Fighter1" method="_on_Timer_on_timed_attack"]

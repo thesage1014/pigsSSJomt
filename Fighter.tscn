@@ -680,7 +680,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2, 0.3, 0.5, 0.7, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ -59.1579, -124.694, -101.586, -1.24429, -459.092, -59.1579 ]
+"values": [ -59.1579, -124.694, -101.586, -1.24429, -99.1, -59.1579 ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Torso/LegR:rotation_degrees")
@@ -981,7 +981,7 @@ __meta__ = {
 
 [node name="LegR" type="AnimatedSprite" parent="Skeleton/Torso"]
 position = Vector2( 558.182, 152.751 )
-rotation = 0.699139
+rotation = 0.518609
 frames = ExtResource( 4 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
@@ -991,7 +991,7 @@ __meta__ = {
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Skeleton/Torso/LegR"]
 position = Vector2( 1100.45, 36.2783 )
-rotation = -1.11452
+rotation = -1.0325
 frames = ExtResource( 3 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
@@ -1001,14 +1001,14 @@ __meta__ = {
 
 [node name="Position2D" type="Position2D" parent="Skeleton/Torso/LegR/AnimatedSprite4"]
 position = Vector2( 1080.3, 36.2786 )
-rotation = -21.5386
+rotation = -28.8505
 __meta__ = {
 "_edit_bone_": true
 }
 
 [node name="LegL" type="AnimatedSprite" parent="Skeleton/Torso"]
 position = Vector2( 551.068, -107.444 )
-rotation = 0.408539
+rotation = 0.477484
 frames = ExtResource( 4 )
 offset = Vector2( 665.285, 49.478 )
 flip_v = true
@@ -1018,8 +1018,9 @@ __meta__ = {
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Skeleton/Torso/LegL"]
 position = Vector2( 1045.15, -31.2649 )
-rotation = 17.9791
+rotation = 17.7807
 frames = ExtResource( 3 )
+frame = 1
 offset = Vector2( 665.285, -73.5525 )
 __meta__ = {
 "_edit_bone_": true
@@ -1027,7 +1028,7 @@ __meta__ = {
 
 [node name="Position2D" type="Position2D" parent="Skeleton/Torso/LegL/AnimatedSprite4"]
 position = Vector2( 1222.24, -51.3916 )
-rotation = 6.26442
+rotation = 6.40356
 __meta__ = {
 "_edit_bone_": true
 }

@@ -20,11 +20,11 @@ export var playerNumber = 1
 export var hitPoints = 100
 var btn = []
 signal on_update_roller
-
+signal on_player_selected
+#export(NodePath) onready var timer = get_node("Timer")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#moveCount = MoveList.size() -1 # for some reason it counts size from 1 but calls array members from 0, so calling array[array.size] causes a crash
-	
 	#print("move count: ", moveCount)
 	var animList = get_node("Skeleton/AnimationPlayer").get_animation_list()
 	
@@ -42,18 +42,7 @@ func _input(event):
 
 
 	if  MoveList.size() > 0 && event.is_action_pressed(btn[0]) :
-		
-		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove]
-		if usedOnce.has(MoveList[nextMove]) :
-			usedOnce.remove(MoveList[nextMove])
-			MoveList.remove(nextMove)
-
-		else :
-			usedOnce.append(MoveList[nextMove])
-			#print(usedOnce)
-			#print("Player 1 picked ", MoveList[nextMove])
-			#should probably call a function on the game control node and pass the selected move so it can trigger the timer and then play the animation?
-		
+		emit_signal("on_player_selected")
 		
 
 	elif event.is_action_released(btn[1]):
@@ -69,7 +58,19 @@ func _input(event):
 	if MoveList.size() > 0 :
 		emit_signal("on_update_roller",MoveList,nextMove)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+func sendAttack():
+	get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove]
+	if usedOnce.has(MoveList[nextMove]) :
+		usedOnce.remove(MoveList[nextMove])
+		MoveList.remove(nextMove)
+
+	else :
+		usedOnce.append(MoveList[nextMove])
+		#print(usedOnce)
+		#print("Player 1 picked ", MoveList[nextMove])
+		#should probably call a function on the game control node and pass the selected move so it can trigger the timer and then play the animation?
+
+
 func CheckLength():
 	if nextMove > MoveList.size()-1:
 		nextMove = 0
@@ -89,3 +90,8 @@ func TakeDamage(damage):
 	#elif nextMove < 0:
 	#	nextMove = MoveList.size()-1
 	#pass
+
+
+func _on_Timer_on_timed_attack():
+	print("sent")
+	sendAttack()
