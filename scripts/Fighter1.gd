@@ -6,7 +6,6 @@ extends Node2D
 var nextMove = 1
 #var moveCount = 0
 var MoveList = [
-				#['One More Time','One More Time', -100],
 				['punchR','Lo Punch',30],
 				['punchL','Hi Punch',50],
 				['blockHi','Hi Block',0],
@@ -14,9 +13,10 @@ var MoveList = [
 				['kickR','Hi Kick',50],
 				['kickL','Lo Kick',30]
 				]
+var WriggleAnim = ['wriggle','wriggle',0]
 var usedOnce = []
 onready var hpStartSize = get_node("HealthBar").rect_size
-export(NodePath) onready var enemy = ""
+export(NodePath) onready var enemy = get_node(enemy)
 export var playerNumber = 1
 export var hitPoints = 100
 var btn = []
@@ -30,7 +30,6 @@ func _ready():
 	#moveCount = MoveList.size() -1 # for some reason it counts size from 1 but calls array members from 0, so calling array[array.size] causes a crash
 	#print("move count: ", moveCount)
 	var animList = get_node("Skeleton/AnimationPlayer").get_animation_list()
-	print("enemy: " + str(enemy) + "self: " + str(self))
 	#MoveList = animList
 
 	if playerNumber == 1 :
@@ -60,10 +59,12 @@ func _input(event):
 
 func sendAttack():
 	CheckLength()
-	
 	emit_signal("on_send_attack")
+	CheckLength()
 	alreadySelected = false
-	if MoveList.size()-1 > 0 :
+	if MoveList.size()-1 > 0:
+		print(MoveList)
+		enemy.TakeDamage(MoveList[nextMove][2])
 		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove][0]
 		if usedOnce.has(MoveList[nextMove][0]) :
 			usedOnce.remove(MoveList[nextMove][0])
@@ -71,19 +72,23 @@ func sendAttack():
 
 		else :
 			usedOnce.append(MoveList[nextMove][0])
-
-
+	elif not usedOnce.has(['One More Time','One More Time', -100]):
+		MoveList.append(['One More Time','One More Time', -100])
+		
+	
 func CheckLength():
-	if nextMove > MoveList.size()-1:
-		nextMove = 0
-	elif nextMove < 0:
-		nextMove = MoveList.size()-1
-	return
+	if MoveList.size() == 0:
+		MoveList.append(WriggleAnim)
+	else:
+		if nextMove > MoveList.size()-1:
+			nextMove = 0
+		elif nextMove < 0:
+			nextMove = MoveList.size()-1
 	
 func TakeDamage(damage):
-	if(not MoveList[nextMove][0].begins_with("block")):
+	if(MoveList.size() > nextMove and not MoveList[nextMove][0].begins_with("block")):
 		hitPoints -= damage
-	get_node("HealthBar").rect_size = hpStartSize * Vector2(100/hitPoints,1)
+	get_node("HealthBar").rect_size = hpStartSize * Vector2(hitPoints/100,1)
 	return hitPoints
 	
 func _process(delta):
@@ -91,5 +96,4 @@ func _process(delta):
 
 
 func _on_Timer_on_timed_attack():
-	print("sent")
 	sendAttack()

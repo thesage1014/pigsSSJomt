@@ -142,10 +142,12 @@ color_ramp = SubResource( 6 )
 
 [node name="Fighter1" parent="." instance=ExtResource( 7 )]
 position = Vector2( -110.194, -6.64807 )
+enemy = NodePath("../Fighter2")
 
 [node name="Fighter2" parent="." instance=ExtResource( 7 )]
 position = Vector2( -618.799, -6.64807 )
 scale = Vector2( -1, 1 )
+enemy = NodePath("../Fighter1")
 playerNumber = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
