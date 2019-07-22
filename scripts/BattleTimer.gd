@@ -17,7 +17,7 @@ func _ready():
 func _process(delta):
 	timeLeft -= delta * (playerChose+1)
 	
-	get_node("Label").text = str(int(timeLeft))
+	get_node("Label").text = str(int(timeLeft+1))
 	if(timeLeft <= 0):
 		triggerAttack()
 	elif(timeLeft < timePerRound*3/4):
@@ -30,6 +30,8 @@ func _process(delta):
 	else:
 		#$Spinner.visible = false
 		$Spinner.modulate.a = 0
+		get_parent().get_node("background")._reset()
+		
 	
 func triggerAttack():
 	emit_signal("on_timed_attack")
