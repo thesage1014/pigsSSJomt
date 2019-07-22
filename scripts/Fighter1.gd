@@ -3,19 +3,20 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
 var nextMove = 1
 #var moveCount = 0
 var MoveList = [
-				['One More Time','One More Time'],
-				['punchR','Lo Punch'],
-				['punchL','Hi Punch'],
-				['blockHi','Hi Block'],
-				['blockLo','Lo Block'],
-				['kickR','Hi Kick'],
-				['kickL','Lo Kick']
+				#['One More Time','One More Time', -100],
+				['punchR','Lo Punch',30],
+				['punchL','Hi Punch',50],
+				['blockHi','Hi Block',0],
+				['blockLo','Lo Block',0],
+				['kickR','Hi Kick',50],
+				['kickL','Lo Kick',30]
 				]
 var usedOnce = []
+onready var hpStartSize = get_node("HealthBar").rect_size
+export(NodePath) onready var enemy = ""
 export var playerNumber = 1
 export var hitPoints = 100
 var btn = []
@@ -29,7 +30,7 @@ func _ready():
 	#moveCount = MoveList.size() -1 # for some reason it counts size from 1 but calls array members from 0, so calling array[array.size] causes a crash
 	#print("move count: ", moveCount)
 	var animList = get_node("Skeleton/AnimationPlayer").get_animation_list()
-	
+	print("enemy: " + str(enemy) + "self: " + str(self))
 	#MoveList = animList
 
 	if playerNumber == 1 :
@@ -59,6 +60,7 @@ func _input(event):
 
 func sendAttack():
 	CheckLength()
+	
 	emit_signal("on_send_attack")
 	alreadySelected = false
 	if MoveList.size()-1 > 0 :
@@ -79,7 +81,9 @@ func CheckLength():
 	return
 	
 func TakeDamage(damage):
-	hitPoints -= damage
+	if(not MoveList[nextMove][0].begins_with("block")):
+		hitPoints -= damage
+	get_node("HealthBar").rect_size = hpStartSize * Vector2(100/hitPoints,1)
 	return hitPoints
 	
 func _process(delta):

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/onemoretime.ogg-1be42c6590fa639a38d6236c1839b891.ogg
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
