@@ -51,5 +51,5 @@ position = Vector2( -110.194, -6.64807 )
 position = Vector2( -618.799, -6.64807 )
 scale = Vector2( -1, 1 )
 playerNumber = 2
-[connection signal="on_timed_attack" from="Timer" to="Fighter2" method="_on_Timer_on_timed_attack"]
 [connection signal="on_timed_attack" from="Timer" to="Fighter1" method="_on_Timer_on_timed_attack"]
+[connection signal="on_timed_attack" from="Timer" to="Fighter2" method="_on_Timer_on_timed_attack"]
