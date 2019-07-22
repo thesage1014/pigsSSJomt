@@ -20,8 +20,6 @@ func _ready():
 
 
 func update_roller(attacks, newAttack):
-	if attacks.size() <= 1 :
-		attacks.append(['wriggle',"Wriggle"])
 	activeAttack = attacks[newAttack][1]
 	
 	get_node("ActiveAttack").text = activeAttack

@@ -1,20 +1,21 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://scripts/Fighter1.gd" type="Script" id=1]
-[ext_resource path="res://AttackRoller.tscn" type="PackedScene" id=2]
-[ext_resource path="res://AnimationPlayer.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/audio/sfx/hit_1.ogg" type="AudioStream" id=4]
-[ext_resource path="res://assets/audio/sfx/hit_2.ogg" type="AudioStream" id=5]
-[ext_resource path="res://assets/audio/sfx/hit_3.ogg" type="AudioStream" id=6]
-[ext_resource path="res://assets/audio/sfx/hit_4.ogg" type="AudioStream" id=7]
-[ext_resource path="res://assets/audio/sfx/hit_5.ogg" type="AudioStream" id=8]
-[ext_resource path="res://assets/audio/sfx/hit_6.ogg" type="AudioStream" id=9]
-[ext_resource path="res://assets/audio/sfx/snap_1.ogg" type="AudioStream" id=10]
-[ext_resource path="res://assets/armstick.tres" type="SpriteFrames" id=11]
-[ext_resource path="res://assets/legstick1.tres" type="SpriteFrames" id=12]
-[ext_resource path="res://assets/stick3.png" type="Texture" id=13]
-[ext_resource path="res://assets/nest.png" type="Texture" id=14]
-[ext_resource path="res://assets/berd.png" type="Texture" id=15]
+[ext_resource path="res://assets/healthBar.png" type="Texture" id=2]
+[ext_resource path="res://AttackRoller.tscn" type="PackedScene" id=3]
+[ext_resource path="res://AnimationPlayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/audio/sfx/hit_1.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/audio/sfx/hit_2.ogg" type="AudioStream" id=6]
+[ext_resource path="res://assets/audio/sfx/hit_3.ogg" type="AudioStream" id=7]
+[ext_resource path="res://assets/audio/sfx/hit_4.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/audio/sfx/hit_5.ogg" type="AudioStream" id=9]
+[ext_resource path="res://assets/audio/sfx/hit_6.ogg" type="AudioStream" id=10]
+[ext_resource path="res://assets/audio/sfx/snap_1.ogg" type="AudioStream" id=11]
+[ext_resource path="res://assets/armstick.tres" type="SpriteFrames" id=12]
+[ext_resource path="res://assets/legstick1.tres" type="SpriteFrames" id=13]
+[ext_resource path="res://assets/stick3.png" type="Texture" id=14]
+[ext_resource path="res://assets/nest.png" type="Texture" id=15]
+[ext_resource path="res://assets/berd.png" type="Texture" id=16]
 
 [sub_resource type="Animation" id=1]
 resource_name = "One More Time"
@@ -91,7 +92,7 @@ tracks/5/keys = {
 "values": [ 0.0, 0.0, 0.0, 0.0 ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Torso/neck/head/Brd:modulate")
+tracks/6/path = NodePath("Torso/neck/head/Brd:self_modulate")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -1354,7 +1355,7 @@ tracks/12/keys = {
 
 [sub_resource type="SpriteFrames" id=11]
 animations = [ {
-"frames": [ ExtResource( 13 ) ],
+"frames": [ ExtResource( 14 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -1362,7 +1363,7 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=12]
 animations = [ {
-"frames": [ ExtResource( 14 ), ExtResource( 15 ) ],
+"frames": [ ExtResource( 15 ), ExtResource( 16 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -1372,7 +1373,21 @@ animations = [ {
 position = Vector2( -199.445, -6.64807 )
 script = ExtResource( 1 )
 
-[node name="AttackRoller" parent="." instance=ExtResource( 2 )]
+[node name="HealthBar" type="NinePatchRect" parent="."]
+margin_left = -1071.0
+margin_top = -805.0
+margin_right = -301.0
+margin_bottom = -615.0
+rect_scale = Vector2( -1, -1 )
+rect_pivot_offset = Vector2( 886.182, -0.675842 )
+texture = ExtResource( 2 )
+patch_margin_left = 170
+patch_margin_top = 43
+patch_margin_right = 170
+patch_margin_bottom = 43
+axis_stretch_vertical = 2
+
+[node name="AttackRoller" parent="." instance=ExtResource( 3 )]
 margin_left = 311.185
 margin_top = -504.577
 margin_right = 731.185
@@ -1386,7 +1401,7 @@ __meta__ = {
 "_edit_ik_": true
 }
 
-[node name="AnimationPlayer" parent="Skeleton" instance=ExtResource( 3 )]
+[node name="AnimationPlayer" parent="Skeleton" instance=ExtResource( 4 )]
 editor/display_folded = true
 "anims/One More Time" = SubResource( 1 )
 anims/blockHi = SubResource( 2 )
@@ -1408,36 +1423,36 @@ next/resetLimbs = "rest"
 next/rest = "idle"
 
 [node name="hit1" type="AudioStreamPlayer" parent="Skeleton/AnimationPlayer"]
-stream = ExtResource( 4 )
-
-[node name="hit2" type="AudioStreamPlayer" parent="Skeleton/AnimationPlayer"]
 stream = ExtResource( 5 )
 
-[node name="hit3" type="AudioStreamPlayer" parent="Skeleton/AnimationPlayer"]
+[node name="hit2" type="AudioStreamPlayer" parent="Skeleton/AnimationPlayer"]
 stream = ExtResource( 6 )
 
-[node name="hit4" type="AudioStreamPlayer" parent="Skeleton/AnimationPlayer"]
+[node name="hit3" type="AudioStreamPlayer" parent="Skeleton/AnimationPlayer"]
 stream = ExtResource( 7 )
 
-[node name="hit5" type="AudioStreamPlayer" parent="Skeleton/AnimationPlayer"]
+[node name="hit4" type="AudioStreamPlayer" parent="Skeleton/AnimationPlayer"]
 stream = ExtResource( 8 )
 
-[node name="hit6" type="AudioStreamPlayer" parent="Skeleton/AnimationPlayer"]
+[node name="hit5" type="AudioStreamPlayer" parent="Skeleton/AnimationPlayer"]
 stream = ExtResource( 9 )
 
-[node name="snap" type="AudioStreamPlayer" parent="Skeleton/AnimationPlayer"]
+[node name="hit6" type="AudioStreamPlayer" parent="Skeleton/AnimationPlayer"]
 stream = ExtResource( 10 )
+
+[node name="snap" type="AudioStreamPlayer" parent="Skeleton/AnimationPlayer"]
+stream = ExtResource( 11 )
 
 [node name="Torso" type="AnimatedSprite" parent="Skeleton"]
 position = Vector2( 25.5059, 106.097 )
 rotation = 1.54013
 scale = Vector2( 0.150222, 0.150222 )
-frames = ExtResource( 11 )
+frames = ExtResource( 12 )
 
 [node name="ArmR" type="AnimatedSprite" parent="Skeleton/Torso"]
 position = Vector2( -644.386, 163.503 )
 rotation = 0.267145
-frames = ExtResource( 11 )
+frames = ExtResource( 12 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
 __meta__ = {
@@ -1447,7 +1462,7 @@ __meta__ = {
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Skeleton/Torso/ArmR"]
 position = Vector2( 1100.45, 36.2783 )
 rotation = -0.403462
-frames = ExtResource( 11 )
+frames = ExtResource( 12 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
 __meta__ = {
@@ -1464,7 +1479,7 @@ __meta__ = {
 [node name="ArmL" type="AnimatedSprite" parent="Skeleton/Torso"]
 position = Vector2( -654.04, -19.9221 )
 rotation = 31.2191
-frames = ExtResource( 11 )
+frames = ExtResource( 12 )
 offset = Vector2( 665.285, -73.5525 )
 __meta__ = {
 "_edit_ik_": true
@@ -1473,7 +1488,7 @@ __meta__ = {
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Skeleton/Torso/ArmL"]
 position = Vector2( 1045.15, -31.2649 )
 rotation = 19.1539
-frames = ExtResource( 11 )
+frames = ExtResource( 12 )
 offset = Vector2( 665.285, -73.5525 )
 __meta__ = {
 "_edit_bone_": true
@@ -1489,7 +1504,7 @@ __meta__ = {
 [node name="LegR" type="AnimatedSprite" parent="Skeleton/Torso"]
 position = Vector2( 558.182, 152.751 )
 rotation = 0.518609
-frames = ExtResource( 12 )
+frames = ExtResource( 13 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
 __meta__ = {
@@ -1499,7 +1514,7 @@ __meta__ = {
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Skeleton/Torso/LegR"]
 position = Vector2( 1100.45, 36.2783 )
 rotation = -1.0325
-frames = ExtResource( 11 )
+frames = ExtResource( 12 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
 __meta__ = {
@@ -1516,7 +1531,7 @@ __meta__ = {
 [node name="LegL" type="AnimatedSprite" parent="Skeleton/Torso"]
 position = Vector2( 551.068, -107.444 )
 rotation = 0.477484
-frames = ExtResource( 12 )
+frames = ExtResource( 13 )
 offset = Vector2( 665.285, 49.478 )
 flip_v = true
 __meta__ = {
@@ -1526,7 +1541,7 @@ __meta__ = {
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Skeleton/Torso/LegL"]
 position = Vector2( 1045.15, -31.2649 )
 rotation = 17.7807
-frames = ExtResource( 11 )
+frames = ExtResource( 12 )
 offset = Vector2( 665.285, -73.5525 )
 __meta__ = {
 "_edit_bone_": true
@@ -1540,7 +1555,7 @@ __meta__ = {
 }
 
 [node name="neck" type="AnimatedSprite" parent="Skeleton/Torso"]
-modulate = Color( 0.956863, 0.807843, 1, 1 )
+self_modulate = Color( 0.956863, 0.807843, 1, 1 )
 position = Vector2( -664.656, 73.7129 )
 rotation = -2.90264
 scale = Vector2( 0.86162, 0.86162 )
@@ -1551,6 +1566,7 @@ __meta__ = {
 }
 
 [node name="head" type="AnimatedSprite" parent="Skeleton/Torso/neck"]
+self_modulate = Color( 0.956863, 0.807843, 1, 1 )
 position = Vector2( 686.422, -63.3096 )
 rotation = 1.29597
 frames = SubResource( 12 )

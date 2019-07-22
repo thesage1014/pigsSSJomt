@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://background.gd" type="Script" id=1]
 [ext_resource path="res://mat_canvas_addmode.tres" type="Material" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/add.tres" type="Material" id=5]
 [ext_resource path="res://assets/circle.png" type="Texture" id=6]
 [ext_resource path="res://Fighter.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/audio/onemoretime.ogg" type="AudioStream" id=8]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 1
@@ -142,11 +143,17 @@ color_ramp = SubResource( 6 )
 
 [node name="Fighter1" parent="." instance=ExtResource( 7 )]
 position = Vector2( -110.194, -6.64807 )
+enemy = NodePath("../Fighter2")
 
 [node name="Fighter2" parent="." instance=ExtResource( 7 )]
 position = Vector2( -618.799, -6.64807 )
 scale = Vector2( -1, 1 )
+enemy = NodePath("../Fighter1")
 playerNumber = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
 [connection signal="on_timed_attack" from="Timer" to="Fighter1" method="_on_Timer_on_timed_attack"]
 [connection signal="on_timed_attack" from="Timer" to="Fighter2" method="_on_Timer_on_timed_attack"]
 [connection signal="on_player_selected" from="Fighter1" to="Timer" method="_on_Fighter1_on_player_selected"]
