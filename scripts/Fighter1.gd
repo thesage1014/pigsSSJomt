@@ -27,12 +27,13 @@ func _ready():
 	
 	#print("move count: ", moveCount)
 	var animList = get_node("Skeleton/AnimationPlayer").get_animation_list()
-
+	
 	#MoveList = animList
 
 	if playerNumber == 1 :
 		btn = ['p1_a','p1_b','p1_c']
 	elif playerNumber == 2:
+		get_node("Skeleton/Torso/neck/head").frame = 1
 		btn = ['p2_a','p2_b','p2_c']
 	pass
 
