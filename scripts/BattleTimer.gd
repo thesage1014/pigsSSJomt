@@ -3,6 +3,7 @@ extends Node2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
+export var fade = 100
 var timePerRound = 7
 var timeLeft = timePerRound
 var playerChose = 0
@@ -20,11 +21,15 @@ func _process(delta):
 	if(timeLeft <= 0):
 		triggerAttack()
 	elif(timeLeft < timePerRound*3/4):
-		get_node("Spinner").visible = true
-		get_node("Spinner").scale = (Vector2.ONE*(timeLeft/timePerRound*7))
-		get_node("Spinner").transform = get_node("Spinner").transform.rotated(-.1)
+		var fade = .05/timeLeft
+		#$Spinner.visible = true
+		#$Spinner.set("modulate.a", fade)
+		$Spinner.modulate = Color(1,1,1,fade)
+		$Spinner.scale = (Vector2.ONE*(timeLeft/timePerRound*7))
+		$Spinner.transform = $Spinner.transform.rotated(-.1)
 	else:
-		get_node("Spinner").visible = false
+		#$Spinner.visible = false
+		$Spinner.modulate.a = 0
 	
 func triggerAttack():
 	emit_signal("on_timed_attack")

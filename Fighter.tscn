@@ -1575,10 +1575,10 @@ __meta__ = {
 }
 
 [node name="Brd" type="Sprite" parent="Skeleton/Torso/neck/head"]
-self_modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 24.4103, -150.435 )
+modulate = Color( 1, 1, 1, 0 )
+position = Vector2( -2922.3, -4345.25 )
+rotation = 0.0665402
 scale = Vector2( 0.850926, 0.850926 )
-texture = ExtResource( 16 )
-offset = Vector2( 0, -373.1 )
+texture = ExtResource( 15 )
 [connection signal="on_player_selected" from="." to="AttackRoller" method="_on_Fighter1_on_player_selected"]
 [connection signal="on_send_attack" from="." to="AttackRoller" method="_on_Fighter1_on_send_attack"]

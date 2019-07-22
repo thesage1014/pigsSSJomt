@@ -104,6 +104,7 @@ script = ExtResource( 4 )
 
 [node name="Label" type="Label" parent="Timer"]
 visible = false
+anchor_right = 1.0
 margin_left = -236.716
 margin_top = -590.656
 margin_right = 154.284
@@ -111,14 +112,12 @@ margin_bottom = -317.656
 grow_horizontal = 2
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.109804, 0.12549, 0.121569, 1 )
-text = "Button
-mash!"
-align = 1
+text = "Select your move"
+align = 2
 valign = 1
 
 [node name="Spinner" type="Sprite" parent="Timer"]
-visible = false
-modulate = Color( 1, 1, 1, 0.486275 )
+modulate = Color( 1, 1, 1, 0.290196 )
 material = ExtResource( 5 )
 position = Vector2( 0.088623, 1.14282 )
 texture = ExtResource( 6 )
