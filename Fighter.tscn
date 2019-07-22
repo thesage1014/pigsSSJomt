@@ -706,6 +706,7 @@ margin_top = -504.577
 margin_right = 731.185
 margin_bottom = -411.577
 rect_pivot_offset = Vector2( 203.903, 44.2925 )
+player = NodePath("..")
 
 [node name="Skeleton" type="Skeleton2D" parent="."]
 position = Vector2( -9.35941, -478.97 )
