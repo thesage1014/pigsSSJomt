@@ -40,9 +40,7 @@ func _ready():
 	get_node("Skeleton/AnimationPlayer").current_animation = "rest"
 
 func _input(event):
-	#CheckLength()
-
-
+	CheckLength()
 	if  MoveList.size() > 0 && event.is_action_pressed(btn[0]) :
 		alreadySelected = true
 		emit_signal("on_player_selected")
@@ -50,30 +48,26 @@ func _input(event):
 	if(not alreadySelected):
 		if event.is_action_released(btn[1]):
 			nextMove += 1
-			CheckLength()
-			#print(MoveList[nextMove])
 		elif event.is_action_released(btn[2]):
 			nextMove -= 1
-			CheckLength()
-			#print(MoveList[nextMove])
+
 
 	CheckLength()
 	if MoveList.size() > 0 :
 		emit_signal("on_update_roller",MoveList,nextMove)
 
 func sendAttack():
+	CheckLength()
 	emit_signal("on_send_attack")
 	alreadySelected = false
-	get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove]
-	if usedOnce.has(MoveList[nextMove]) :
-		usedOnce.remove(MoveList[nextMove])
-		MoveList.remove(nextMove)
+	if MoveList.size()-1 > 0 :
+		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove]
+		if usedOnce.has(MoveList[nextMove]) :
+			usedOnce.remove(MoveList[nextMove])
+			MoveList.remove(nextMove)
 
-	else :
-		usedOnce.append(MoveList[nextMove])
-		#print(usedOnce)
-		#print("Player 1 picked ", MoveList[nextMove])
-		#should probably call a function on the game control node and pass the selected move so it can trigger the timer and then play the animation?
+		else :
+			usedOnce.append(MoveList[nextMove])
 
 
 func CheckLength():
@@ -89,13 +83,6 @@ func TakeDamage(damage):
 	
 func _process(delta):
 	get_node("Skeleton/AnimationPlayer").playback_speed = rand_range(.7,1.4)
-	#if !nextMove:
-		#nextMove = 0
-	#if nextMove > MoveList.size()-1:
-	#	nextMove = 0
-	#elif nextMove < 0:
-	#	nextMove = MoveList.size()-1
-	#pass
 
 
 func _on_Timer_on_timed_attack():

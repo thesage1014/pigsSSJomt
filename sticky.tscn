@@ -8,28 +8,28 @@
 [ext_resource path="res://assets/circle.png" type="Texture" id=6]
 [ext_resource path="res://Fighter.tscn" type="PackedScene" id=7]
 
-[sub_resource type="CanvasItemMaterial" id=4]
+[sub_resource type="CanvasItemMaterial" id=1]
 
-[sub_resource type="Gradient" id=5]
+[sub_resource type="Gradient" id=2]
 offsets = PoolRealArray( 0, 0.258065, 0.516129, 0.793548, 1 )
 colors = PoolColorArray( 0, 0, 0, 1, 1, 1, 1, 1, 0.989662, 0.989662, 0.989662, 1, 1, 1, 1, 1, 0, 0, 0, 1 )
 
-[sub_resource type="GradientTexture" id=6]
-gradient = SubResource( 5 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="DynamicFontData" id=1]
+[sub_resource type="DynamicFontData" id=4]
 font_path = "res://assets/AUTUMN.ttf"
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=5]
 size = 120
 outline_size = 28
 outline_color = Color( 0.403922, 0.47451, 0.509804, 1 )
 use_mipmaps = true
 use_filter = true
 extra_spacing_top = -50
-font_data = SubResource( 1 )
+font_data = SubResource( 4 )
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=6]
 offsets = PoolRealArray( 0, 0.15894, 0.695364, 1 )
 colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
@@ -41,17 +41,18 @@ scale = Vector2( 0.5, 0.5 )
 margin_right = 40.0
 margin_bottom = 40.0
 script = ExtResource( 1 )
+magnitude = 10
 
 [node name="bg" type="TextureRect" parent="background"]
 visible = false
 modulate = Color( 1, 1, 1, 0.396078 )
 self_modulate = Color( 1, 1, 1, 0.313726 )
-material = SubResource( 4 )
+material = SubResource( 1 )
 margin_left = -1394.59
 margin_top = -1235.09
 margin_right = 666.412
 margin_bottom = 310.913
-texture = SubResource( 6 )
+texture = SubResource( 3 )
 expand = true
 
 [node name="bg_g" type="TextureRect" parent="background"]
@@ -95,7 +96,7 @@ margin_top = -590.656
 margin_right = 154.284
 margin_bottom = -317.656
 grow_horizontal = 2
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.109804, 0.12549, 0.121569, 1 )
 text = "Button
 mash!"
@@ -125,7 +126,7 @@ angular_velocity_random = 1.0
 angle = 720.0
 angle_random = 1.0
 scale_amount = 1.1
-color_ramp = SubResource( 3 )
+color_ramp = SubResource( 6 )
 
 [node name="Fighter1" parent="." instance=ExtResource( 7 )]
 position = Vector2( -110.194, -6.64807 )
