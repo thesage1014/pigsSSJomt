@@ -18,7 +18,7 @@ func _ready():
 
 
 func update_roller(attacks, newAttack):
-	if attacks.size() == 0 :
+	if attacks.size() <= 1 :
 		attacks.append("die i guess?")
 	activeAttack = attacks[newAttack]
 	

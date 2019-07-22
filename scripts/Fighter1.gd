@@ -9,7 +9,7 @@ var MoveList = [
 				'rest',
 				'punchR',
 				'punchL',
-				'block',
+				'blockHi',
 				'kickR',
 				'kickL',
 				'grab?',
@@ -25,7 +25,10 @@ func _ready():
 	#moveCount = MoveList.size() -1 # for some reason it counts size from 1 but calls array members from 0, so calling array[array.size] causes a crash
 	
 	#print("move count: ", moveCount)
-	
+	var animList = get_node("Skeleton/AnimationPlayer").get_animation_list()
+
+	#MoveList = animList
+
 	if playerNumber == 1 :
 		btn = ['p1_a','p1_b','p1_c']
 	elif playerNumber == 2:
@@ -33,12 +36,14 @@ func _ready():
 	pass
 
 func _input(event):
-	CheckLength()
-	print_debug(nextMove)
+	#CheckLength()
+
 
 	if  MoveList.size() > 0 && event.is_action_pressed(btn[0]) :
+		
+		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove]
 		if usedOnce.has(MoveList[nextMove]) :
-			usedOnce.remove(nextMove)
+			usedOnce.remove(MoveList[nextMove])
 			MoveList.remove(nextMove)
 
 		else :
@@ -46,7 +51,8 @@ func _input(event):
 			#print(usedOnce)
 			#print("Player 1 picked ", MoveList[nextMove])
 			#should probably call a function on the game control node and pass the selected move so it can trigger the timer and then play the animation?
-			get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove]
+		
+		
 
 	elif event.is_action_released(btn[1]):
 		nextMove += 1
@@ -67,7 +73,12 @@ func CheckLength():
 		nextMove = 0
 	elif nextMove < 0:
 		nextMove = MoveList.size()-1
-	pass
+	return
+	
+func TakeDamage(damage):
+	hitPoints -= damage
+	return hitPoints
+	
 #func _process(delta):
 	#if !nextMove:
 		#nextMove = 0
