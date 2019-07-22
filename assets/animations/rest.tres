@@ -543,7 +543,7 @@ tracks/44/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 tracks/45/type = "value"
-tracks/45/path = NodePath("Brd:position")
+tracks/45/path = NodePath("Torso/neck/head/Brd:position")
 tracks/45/interp = 1
 tracks/45/loop_wrap = true
 tracks/45/imported = false
@@ -555,7 +555,7 @@ tracks/45/keys = {
 "values": [ Vector2( -393.074, -618.013 ) ]
 }
 tracks/46/type = "value"
-tracks/46/path = NodePath("Brd:rotation_degrees")
+tracks/46/path = NodePath("Torso/neck/head/Brd:rotation_degrees")
 tracks/46/interp = 1
 tracks/46/loop_wrap = true
 tracks/46/imported = false

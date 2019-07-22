@@ -29,7 +29,7 @@ func _input(event):
 		var y = b_pos.y
 		$bg_b.set("rect_position", Vector2(newx, y))
 		
-		
+	
 		
 	if event.is_action_pressed("p2_a"):
 		var newx = r_pos.x - magnitude
