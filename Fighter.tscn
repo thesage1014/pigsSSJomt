@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/Fighter1.gd" type="Script" id=1]
 [ext_resource path="res://AttackRoller.tscn" type="PackedScene" id=2]
@@ -389,6 +389,213 @@ tracks/29/keys = {
 }
 
 [sub_resource type="Animation" id=4]
+resource_name = "blockLo"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Torso/ArmL/AnimatedSprite4:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1209.03, 1217.07, 1209.03 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Torso/ArmL:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1835.49, 1762.54, 1835.49 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Torso/LegR/AnimatedSprite4:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -63.8573, -30.566, -63.8573 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Torso/LegR:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 40.0577, 44.3356, 40.0577 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Torso/LegL/AnimatedSprite4:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1030.13, 1007.12, 1030.13 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Torso/LegL:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 23.4076, 18.7131, 23.4076 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Torso/neck/head:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 74.2536, 106.068, 74.2536 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Torso/neck:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -166.309, -213.478, -166.309 ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Torso:rotation_degrees")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 88.243, 94.4836, 88.243 ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Torso/ArmR/AnimatedSprite4:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 116.47, 35.368, 116.47 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Torso/ArmR:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 45.4322, 18.0636, 45.4322 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Torso/ArmR/AnimatedSprite4/Position2D:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -609.438, -502.782, -609.438 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Torso/LegR/AnimatedSprite4/Position2D:rotation_degrees")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ -1234.07, -1272.49, -1234.07 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("..:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Torso/ArmL/AnimatedSprite4/Position2D:rotation_degrees")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 177.295, 39.0422, 177.295 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Torso/LegL/AnimatedSprite4/Position2D:rotation_degrees")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 358.925, 386.623, 358.925 ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Torso:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0, 0.2, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 25.5059, 106.097 ), Vector2( 65.1733, 144.178 ), Vector2( 25.5059, 106.097 ) ]
+}
+
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Torso/LegL/AnimatedSprite4/Position2D:position")
 tracks/0/interp = 1
@@ -462,7 +669,7 @@ tracks/5/keys = {
 "values": [ 0, 1 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Torso/LegR/AnimatedSprite4:rotation_degrees")
 tracks/0/interp = 1
@@ -548,7 +755,7 @@ tracks/6/keys = {
 "values": [ 366.897 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Torso/ArmL/AnimatedSprite4/Position2D:position")
 tracks/0/interp = 1
@@ -622,7 +829,7 @@ tracks/5/keys = {
 "values": [ 1817.42, 1870.51, 1852.81, 1788.72 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath("Torso/ArmR/AnimatedSprite4/Position2D:position")
 tracks/0/interp = 1
@@ -721,7 +928,6 @@ scale = Vector2( 0.148534, 0.148534 )
 frames = ExtResource( 3 )
 
 [node name="ArmR" type="AnimatedSprite" parent="Skeleton/Torso"]
-editor/display_folded = true
 position = Vector2( -644.386, 163.503 )
 rotation = 0.792942
 frames = ExtResource( 3 )
@@ -749,7 +955,6 @@ __meta__ = {
 }
 
 [node name="ArmL" type="AnimatedSprite" parent="Skeleton/Torso"]
-editor/display_folded = true
 position = Vector2( -654.04, -19.9221 )
 rotation = 32.0354
 frames = ExtResource( 3 )
@@ -775,7 +980,6 @@ __meta__ = {
 }
 
 [node name="LegR" type="AnimatedSprite" parent="Skeleton/Torso"]
-editor/display_folded = true
 position = Vector2( 558.182, 152.751 )
 rotation = 0.699139
 frames = ExtResource( 4 )
@@ -803,7 +1007,6 @@ __meta__ = {
 }
 
 [node name="LegL" type="AnimatedSprite" parent="Skeleton/Torso"]
-editor/display_folded = true
 position = Vector2( 551.068, -107.444 )
 rotation = 0.408539
 frames = ExtResource( 4 )
@@ -830,7 +1033,7 @@ __meta__ = {
 }
 
 [node name="neck" type="AnimatedSprite" parent="Skeleton/Torso"]
-modulate = Color( 0.807843, 0.941176, 1, 1 )
+modulate = Color( 0.956863, 0.807843, 1, 1 )
 position = Vector2( -664.656, 73.7129 )
 rotation = -2.90264
 scale = Vector2( 0.86162, 0.86162 )
@@ -850,7 +1053,8 @@ __meta__ = {
 
 [node name="AnimationPlayer" parent="Skeleton" instance=ExtResource( 8 )]
 anims/blockHi = SubResource( 3 )
-anims/kickL = SubResource( 4 )
-anims/kickR = SubResource( 5 )
-anims/punchL = SubResource( 6 )
-anims/punchR = SubResource( 7 )
+anims/blockLo = SubResource( 4 )
+anims/kickL = SubResource( 5 )
+anims/kickR = SubResource( 6 )
+anims/punchL = SubResource( 7 )
+anims/punchR = SubResource( 8 )
