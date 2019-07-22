@@ -18,7 +18,7 @@ var OMTAnim = ['One More Time','One More Time', 0]
 onready var hpStartSize = get_node("HealthBar").rect_size
 export(NodePath) onready var enemy = get_node(enemy)
 export var playerNumber = 1
-export var hitPoints = 100
+export var hitPoints = 100.0
 var btn = []
 var alreadySelected = false
 var alreadyResurrected = false
@@ -55,7 +55,6 @@ func _input(event):
 
 
 	CheckLength()
-	emit_signal("on_update_roller",MoveList,nextMove)
 
 func sendAttack():
 	CheckLength()
@@ -73,7 +72,7 @@ func sendAttack():
 				['kickR','Hi Kick',50],
 				['kickL','Lo Kick',30]
 				]
-			hitPoints += 100
+			hitPoints += 100.0
 		else:
 			enemy.TakeDamage(MoveList[nextMove][2])
 		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove][0]
@@ -86,6 +85,7 @@ func CheckLength():
 			alreadyResurrected = true
 		else:
 			MoveList.append(WriggleAnim)
+		nextMove = 0
 	else:
 		if nextMove > MoveList.size()-1:
 			nextMove = 0
@@ -95,12 +95,14 @@ func CheckLength():
 func TakeDamage(damage):
 	if(MoveList.size() > nextMove and not MoveList[nextMove][0].begins_with("block")):
 		hitPoints -= damage
-	get_node("HealthBar").rect_size = hpStartSize * Vector2(hitPoints/100,1)
+	get_node("HealthBar").rect_size = hpStartSize * Vector2(hitPoints/100.0,1)
+	print(hpStartSize * Vector2(hitPoints/100,1))
 	return hitPoints
 	
 func _process(delta):
 	get_node("Skeleton/AnimationPlayer").playback_speed = rand_range(.7,1.4)
-
+	CheckLength()
+	emit_signal("on_update_roller",MoveList,nextMove)
 
 func _on_Timer_on_timed_attack():
 	sendAttack()
