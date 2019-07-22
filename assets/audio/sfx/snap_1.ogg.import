@@ -11,5 +11,5 @@ dest_files=[ "res://.import/snap_1.ogg-3014b7a830371ccfeb4131114a35c981.oggstr" 
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0
