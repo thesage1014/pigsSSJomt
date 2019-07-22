@@ -77,7 +77,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 0.4, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( -393.074, -618.013 ), Vector2( -45.442, -238.571 ), Vector2( 9.08862, -313.551 ), Vector2( 24.4103, -150.435 ) ]
+"values": [ Vector2( -1743.66, -2284.28 ), Vector2( -45.442, -238.571 ), Vector2( 9.08862, -313.551 ), Vector2( 24.4103, -150.435 ) ]
 }
 tracks/5/type = "value"
 tracks/5/path = NodePath("Torso/neck/head/Brd:rotation_degrees")
@@ -1575,10 +1575,10 @@ __meta__ = {
 }
 
 [node name="Brd" type="Sprite" parent="Skeleton/Torso/neck/head"]
-modulate = Color( 1, 1, 1, 0 )
-position = Vector2( -2922.3, -4345.25 )
-rotation = 0.0665402
+self_modulate = Color( 1, 1, 1, 0 )
+position = Vector2( 24.4103, -150.435 )
 scale = Vector2( 0.850926, 0.850926 )
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
+offset = Vector2( 0, -250 )
 [connection signal="on_player_selected" from="." to="AttackRoller" method="_on_Fighter1_on_player_selected"]
 [connection signal="on_send_attack" from="." to="AttackRoller" method="_on_Fighter1_on_send_attack"]

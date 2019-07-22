@@ -59,7 +59,6 @@ func _input(event):
 func sendAttack():
 	CheckLength()
 	emit_signal("on_send_attack")
-	CheckLength()
 	alreadySelected = false
 	if MoveList.size() > 0:
 		print(MoveList)
@@ -77,14 +76,13 @@ func sendAttack():
 			enemy.TakeDamage(MoveList[nextMove][2])
 		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove][0]
 		MoveList.remove(nextMove)
+		if MoveList.size() == 0 and not alreadyResurrected:
+				MoveList.append(OMTAnim)
+				alreadyResurrected = true
 	
 func CheckLength():
 	if MoveList.size() == 0:
-		if not alreadyResurrected:
-			MoveList.append(OMTAnim)
-			alreadyResurrected = true
-		else:
-			MoveList.append(WriggleAnim)
+		MoveList.append(WriggleAnim)
 		nextMove = 0
 	else:
 		if nextMove > MoveList.size()-1:
@@ -95,12 +93,16 @@ func CheckLength():
 func TakeDamage(damage):
 	if(MoveList.size() > nextMove and not MoveList[nextMove][0].begins_with("block")):
 		hitPoints -= damage
-	get_node("HealthBar").rect_size = hpStartSize * Vector2(hitPoints/100.0,1)
+	if hitPoints <= 0:
+		get_node("HealthBar").visible = false
+	else:
+		get_node("HealthBar").visible = true
+		get_node("HealthBar").rect_size = hpStartSize * Vector2(hitPoints/100.0,1)
 	print(hpStartSize * Vector2(hitPoints/100,1))
 	return hitPoints
 	
 func _process(delta):
-	get_node("Skeleton/AnimationPlayer").playback_speed = rand_range(.7,1.4)
+	get_node("Skeleton/AnimationPlayer").playback_speed = rand_range(.8,1.7)
 	CheckLength()
 	emit_signal("on_update_roller",MoveList,nextMove)
 
