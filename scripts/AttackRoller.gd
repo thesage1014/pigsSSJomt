@@ -3,7 +3,8 @@ extends Panel
 # Declare member variables here. Examples:
 class_name AttackRoller1
 var activeAttack
-onready var player = get_parent()
+#onready var player = get_parent()
+export(NodePath) onready var player = get_node(player)
 
 
 # Called when the node enters the scene tree for the first time.

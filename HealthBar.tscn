@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://HealthBar.gd" type="Script" id=1]
+
+[node name="ColorRect" type="ColorRect"]
+margin_left = -1119.93
+margin_top = -894.136
+margin_right = -1113.93
+margin_bottom = -845.136
+grow_horizontal = 0
+rect_scale = Vector2( 100, 1 )
+color = Color( 1, 0, 0, 1 )
+script = ExtResource( 1 )
