@@ -7,13 +7,13 @@ extends Node2D
 var nextMove = 1
 #var moveCount = 0
 var MoveList = [
-				'rest',
-				'punchR',
-				'punchL',
-				'blockHi',
-				'kickR',
-				'kickL',
-				'grab?',
+				['One More Time','One More Time'],
+				['punchR','Lo Punch'],
+				['punchL','Hi Punch'],
+				['blockHi','Hi Block'],
+				['blockLo','Lo Block'],
+				['kickR','Hi Kick'],
+				['kickL','Lo Kick']
 				]
 var usedOnce = []
 export var playerNumber = 1
@@ -37,7 +37,8 @@ func _ready():
 	elif playerNumber == 2:
 #		get_node("Skeleton/Torso/neck/head").frame = 1
 		btn = ['p2_a','p2_b','p2_c']
-	get_node("Skeleton/AnimationPlayer").current_animation = "rest"
+	#reset pose
+	get_node("Skeleton/AnimationPlayer").current_animation = "resetLimbs"
 
 func _input(event):
 	CheckLength()
@@ -61,13 +62,13 @@ func sendAttack():
 	emit_signal("on_send_attack")
 	alreadySelected = false
 	if MoveList.size()-1 > 0 :
-		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove]
-		if usedOnce.has(MoveList[nextMove]) :
-			usedOnce.remove(MoveList[nextMove])
+		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove][0]
+		if usedOnce.has(MoveList[nextMove][0]) :
+			usedOnce.remove(MoveList[nextMove][0])
 			MoveList.remove(nextMove)
 
 		else :
-			usedOnce.append(MoveList[nextMove])
+			usedOnce.append(MoveList[nextMove][0])
 
 
 func CheckLength():

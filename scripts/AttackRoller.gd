@@ -21,19 +21,19 @@ func _ready():
 
 func update_roller(attacks, newAttack):
 	if attacks.size() <= 1 :
-		attacks.append("die i guess?")
-	activeAttack = attacks[newAttack]
+		attacks.append(['wriggle',"Wriggle"])
+	activeAttack = attacks[newAttack][1]
 	
 	get_node("ActiveAttack").text = activeAttack
 	#print(get_node("ActiveAttack").get_parent().name)
 	if(newAttack >= attacks.size()-1):
-		get_node("UpAttack").text = attacks[0]
+		get_node("UpAttack").text = attacks[0][1]
 	else:
-		get_node("UpAttack").text = attacks[newAttack+1]
+		get_node("UpAttack").text = attacks[newAttack+1][1]
 	if(newAttack <= 0):
-		get_node("DownAttack").text = attacks[attacks.size()-1]
+		get_node("DownAttack").text = attacks[attacks.size()-1][1]
 	else:
-		get_node("DownAttack").text = attacks[newAttack-1]
+		get_node("DownAttack").text = attacks[newAttack-1][1]
 
 
 func _on_Fighter1_on_player_selected():
