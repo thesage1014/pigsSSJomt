@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/bg.jpg" type="Texture" id=1]
 [ext_resource path="res://scripts/BattleTimer.gd" type="Script" id=2]
-[ext_resource path="res://Fighter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/add.tres" type="Material" id=3]
+[ext_resource path="res://assets/circle.png" type="Texture" id=4]
+[ext_resource path="res://Fighter.tscn" type="PackedScene" id=5]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://assets/AUTUMN.ttf"
@@ -15,6 +17,10 @@ use_mipmaps = true
 use_filter = true
 extra_spacing_top = -50
 font_data = SubResource( 1 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0, 0.15894, 0.695364, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="World" type="Node2D"]
 position = Vector2( 695.063, 493.638 )
@@ -29,6 +35,7 @@ texture = ExtResource( 1 )
 expand = true
 
 [node name="Timer" type="Node2D" parent="."]
+position = Vector2( -324.276, -331.492 )
 script = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="Timer"]
@@ -44,12 +51,38 @@ mash!"
 align = 1
 valign = 1
 
-[node name="Fighter1" parent="." instance=ExtResource( 3 )]
+[node name="Spinner" type="Sprite" parent="Timer"]
+modulate = Color( 1, 1, 1, 0.486275 )
+material = ExtResource( 3 )
+position = Vector2( 0.088623, 1.14282 )
+texture = ExtResource( 4 )
+offset = Vector2( -46.0549, 8.01324 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Timer/Spinner"]
+material = ExtResource( 3 )
+amount = 4
+texture = ExtResource( 4 )
+emission_shape = 1
+emission_sphere_radius = 35.41
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 322.58
+initial_velocity_random = 1.0
+angular_velocity = 92.9
+angular_velocity_random = 1.0
+angle = 720.0
+angle_random = 1.0
+scale_amount = 1.1
+color_ramp = SubResource( 3 )
+
+[node name="Fighter1" parent="." instance=ExtResource( 5 )]
 position = Vector2( -110.194, -6.64807 )
 
-[node name="Fighter2" parent="." instance=ExtResource( 3 )]
+[node name="Fighter2" parent="." instance=ExtResource( 5 )]
 position = Vector2( -618.799, -6.64807 )
 scale = Vector2( -1, 1 )
 playerNumber = 2
-[connection signal="on_timed_attack" from="Timer" to="Fighter1" method="_on_Timer_on_timed_attack"]
 [connection signal="on_timed_attack" from="Timer" to="Fighter2" method="_on_Timer_on_timed_attack"]
+[connection signal="on_timed_attack" from="Timer" to="Fighter1" method="_on_Timer_on_timed_attack"]
+[connection signal="on_player_selected" from="Fighter1" to="Timer" method="_on_Fighter1_on_player_selected"]
+[connection signal="on_player_selected" from="Fighter2" to="Timer" method="_on_Fighter2_on_player_selected"]

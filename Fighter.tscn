@@ -1059,3 +1059,5 @@ anims/kickL = SubResource( 5 )
 anims/kickR = SubResource( 6 )
 anims/punchL = SubResource( 7 )
 anims/punchR = SubResource( 8 )
+[connection signal="on_player_selected" from="." to="AttackRoller" method="_on_Fighter1_on_player_selected"]
+[connection signal="on_send_attack" from="." to="AttackRoller" method="_on_Fighter1_on_send_attack"]

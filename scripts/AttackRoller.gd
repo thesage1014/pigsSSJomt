@@ -34,3 +34,13 @@ func update_roller(attacks, newAttack):
 		get_node("DownAttack").text = attacks[attacks.size()-1]
 	else:
 		get_node("DownAttack").text = attacks[newAttack-1]
+
+
+func _on_Fighter1_on_player_selected():
+	get_node("UpAttack").visible = false
+	get_node("DownAttack").visible = false
+
+
+func _on_Fighter1_on_send_attack():
+	get_node("UpAttack").visible = true
+	get_node("DownAttack").visible = true

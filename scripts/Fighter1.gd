@@ -19,8 +19,10 @@ var usedOnce = []
 export var playerNumber = 1
 export var hitPoints = 100
 var btn = []
+var alreadySelected = false
 signal on_update_roller
 signal on_player_selected
+signal on_send_attack
 #export(NodePath) onready var timer = get_node("Timer")
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -42,23 +44,26 @@ func _input(event):
 
 
 	if  MoveList.size() > 0 && event.is_action_pressed(btn[0]) :
+		alreadySelected = true
 		emit_signal("on_player_selected")
 		
-
-	elif event.is_action_released(btn[1]):
-		nextMove += 1
-		CheckLength()
-		#print(MoveList[nextMove])
-	elif event.is_action_released(btn[2]):
-		nextMove -= 1
-		CheckLength()
-		#print(MoveList[nextMove])
+	if(not alreadySelected):
+		if event.is_action_released(btn[1]):
+			nextMove += 1
+			CheckLength()
+			#print(MoveList[nextMove])
+		elif event.is_action_released(btn[2]):
+			nextMove -= 1
+			CheckLength()
+			#print(MoveList[nextMove])
 
 	CheckLength()
 	if MoveList.size() > 0 :
 		emit_signal("on_update_roller",MoveList,nextMove)
 
 func sendAttack():
+	emit_signal("on_send_attack")
+	alreadySelected = false
 	get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove]
 	if usedOnce.has(MoveList[nextMove]) :
 		usedOnce.remove(MoveList[nextMove])

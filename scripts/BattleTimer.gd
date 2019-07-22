@@ -20,13 +20,26 @@ func _process(delta):
 		timeLeft -= delta
 	
 	get_node("Label").text = str(int(timeLeft))
-	
 	if(timeLeft <= 0):
 		triggerAttack()
+	elif(timeLeft < timePerRound*3/4):
+		get_node("Spinner").visible = true
+		get_node("Spinner").scale = (Vector2.ONE*(timeLeft/timePerRound*7))
+		get_node("Spinner").transform = get_node("Spinner").transform.rotated(-.1)
+	else:
+		get_node("Spinner").visible = false
 	
 func triggerAttack():
 	emit_signal("on_timed_attack")
 	timePerRound -= 1
-	timeLeft = timePerRound
+	timeLeft = timePerRound+1
 	playerChose = false
 	
+
+
+func _on_Fighter1_on_player_selected():
+	playerChose = true
+
+
+func _on_Fighter2_on_player_selected():
+	playerChose = true
