@@ -25,6 +25,7 @@ var alreadyResurrected = false
 signal on_update_roller
 signal on_player_selected
 signal on_send_attack
+var removingMove = false
 #export(NodePath) onready var timer = get_node("Timer")
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -75,7 +76,7 @@ func sendAttack():
 		else:
 			enemy.TakeDamage(MoveList[nextMove][2])
 		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove][0]
-		MoveList.remove(nextMove)
+		removingMove = true
 		if MoveList.size() == 0 or hitPoints <= 0:
 			if !alreadyResurrected:
 				MoveList.append(OMTAnim)
@@ -92,7 +93,7 @@ func CheckLength():
 			nextMove = MoveList.size()-1
 	
 func TakeDamage(damage):
-	if(MoveList.size() > nextMove and not MoveList[nextMove][0].begins_with("block")):
+	if(not MoveList[nextMove][0].begins_with("block")):
 		hitPoints -= damage
 	if hitPoints <= 0:
 		get_node("HealthBar").visible = false
@@ -105,6 +106,9 @@ func TakeDamage(damage):
 	
 func _process(delta):
 	get_node("Skeleton/AnimationPlayer").playback_speed = rand_range(.8,1.7)
+	if(removingMove):
+		MoveList.remove(nextMove)
+		removingMove = false
 	CheckLength()
 	emit_signal("on_update_roller",MoveList,nextMove)
 
