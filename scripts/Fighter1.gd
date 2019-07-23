@@ -61,7 +61,7 @@ func sendAttack():
 	emit_signal("on_send_attack")
 	alreadySelected = false
 	if MoveList.size() > 0:
-		print(MoveList)
+		#print(MoveList)
 		if MoveList[0][0] == "One More Time":
 			MoveList = [
 				['punchR','Lo Punch',30],
@@ -76,7 +76,8 @@ func sendAttack():
 			enemy.TakeDamage(MoveList[nextMove][2])
 		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove][0]
 		MoveList.remove(nextMove)
-		if MoveList.size() == 0 and not alreadyResurrected:
+		if MoveList.size() == 0 or hitPoints <= 0:
+			if !alreadyResurrected:
 				MoveList.append(OMTAnim)
 				alreadyResurrected = true
 	
@@ -99,7 +100,7 @@ func TakeDamage(damage):
 		get_node("HealthBar").visible = true
 		get_node("HealthBar").rect_size = hpStartSize * Vector2(hitPoints/100.0,1)
 	#print(hpStartSize * Vector2(hitPoints/100,1))
-	print(hitPoints)
+	print("player ", playerNumber, " has ", hitPoints, "hp")
 	return hitPoints
 	
 func _process(delta):
