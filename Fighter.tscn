@@ -1193,6 +1193,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Torso/neck/head/Brd:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
 
 [sub_resource type="Animation" id=10]
 resource_name = "wriggle"
@@ -1444,14 +1456,14 @@ stream = ExtResource( 10 )
 stream = ExtResource( 11 )
 
 [node name="Torso" type="AnimatedSprite" parent="Skeleton"]
-position = Vector2( 25.5059, 106.097 )
-rotation = 1.54013
-scale = Vector2( 0.150222, 0.150222 )
+position = Vector2( 10.9721, 96.4077 )
+rotation = 1.61277
+scale = Vector2( 0.148534, 0.148534 )
 frames = ExtResource( 12 )
 
 [node name="ArmR" type="AnimatedSprite" parent="Skeleton/Torso"]
 position = Vector2( -644.386, 163.503 )
-rotation = 0.267145
+rotation = 0.440388
 frames = ExtResource( 12 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
@@ -1461,7 +1473,7 @@ __meta__ = {
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Skeleton/Torso/ArmR"]
 position = Vector2( 1100.45, 36.2783 )
-rotation = -0.403462
+rotation = 2.00798
 frames = ExtResource( 12 )
 offset = Vector2( 666.993, 76.2777 )
 flip_v = true
@@ -1470,15 +1482,15 @@ __meta__ = {
 }
 
 [node name="Position2D" type="Position2D" parent="Skeleton/Torso/ArmR/AnimatedSprite4"]
-position = Vector2( 1080.3, 36.2786 )
-rotation = -23.3558
+position = Vector2( 943.12, 43.079 )
+rotation = -13.371
 __meta__ = {
 "_edit_bone_": true
 }
 
 [node name="ArmL" type="AnimatedSprite" parent="Skeleton/Torso"]
 position = Vector2( -654.04, -19.9221 )
-rotation = 31.2191
+rotation = 31.72
 frames = ExtResource( 12 )
 offset = Vector2( 665.285, -73.5525 )
 __meta__ = {
@@ -1487,7 +1499,7 @@ __meta__ = {
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Skeleton/Torso/ArmL"]
 position = Vector2( 1045.15, -31.2649 )
-rotation = 19.1539
+rotation = 21.089
 frames = ExtResource( 12 )
 offset = Vector2( 665.285, -73.5525 )
 __meta__ = {
@@ -1496,7 +1508,7 @@ __meta__ = {
 
 [node name="Position2D" type="Position2D" parent="Skeleton/Torso/ArmL/AnimatedSprite4"]
 position = Vector2( 1222.24, -51.3916 )
-rotation = 5.6627
+rotation = 3.25267
 __meta__ = {
 "_edit_bone_": true
 }
@@ -1523,14 +1535,14 @@ __meta__ = {
 
 [node name="Position2D" type="Position2D" parent="Skeleton/Torso/LegR/AnimatedSprite4"]
 position = Vector2( 1080.3, 36.2786 )
-rotation = -35.3091
+rotation = -22.9987
 __meta__ = {
 "_edit_bone_": true
 }
 
 [node name="LegL" type="AnimatedSprite" parent="Skeleton/Torso"]
 position = Vector2( 551.068, -107.444 )
-rotation = 0.477484
+rotation = 0.223352
 frames = ExtResource( 13 )
 offset = Vector2( 665.285, 49.478 )
 flip_v = true
@@ -1540,7 +1552,7 @@ __meta__ = {
 
 [node name="AnimatedSprite4" type="AnimatedSprite" parent="Skeleton/Torso/LegL"]
 position = Vector2( 1045.15, -31.2649 )
-rotation = 17.7807
+rotation = 18.1191
 frames = ExtResource( 12 )
 offset = Vector2( 665.285, -73.5525 )
 __meta__ = {
@@ -1549,7 +1561,7 @@ __meta__ = {
 
 [node name="Position2D" type="Position2D" parent="Skeleton/Torso/LegL/AnimatedSprite4"]
 position = Vector2( 1222.24, -51.3916 )
-rotation = 6.37502
+rotation = 6.31087
 __meta__ = {
 "_edit_bone_": true
 }
@@ -1576,7 +1588,7 @@ __meta__ = {
 
 [node name="Brd" type="Sprite" parent="Skeleton/Torso/neck/head"]
 self_modulate = Color( 1, 1, 1, 0 )
-position = Vector2( 24.4103, -150.435 )
+position = Vector2( -1743.66, -2284.28 )
 scale = Vector2( 0.850926, 0.850926 )
 texture = ExtResource( 16 )
 offset = Vector2( 0, -250 )
