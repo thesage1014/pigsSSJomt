@@ -37,11 +37,11 @@ func update_roller(attacks, newAttack):
 
 func _on_Fighter1_on_player_selected():
 	get_node("UpAttack").visible = false
-	visible = false
+	modulate.a = .5
 	get_node("DownAttack").visible = false
 
 
 func _on_Fighter1_on_send_attack():
 	get_node("UpAttack").visible = true
-	visible = true
+	modulate.a = 1
 	get_node("DownAttack").visible = true

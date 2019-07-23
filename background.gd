@@ -64,7 +64,7 @@ func _reset() :
 	$bg_r.rect_rotation = 0
 	$bg_g.rect_rotation = 0
 	$bg_b.rect_rotation = 0
-	
+
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

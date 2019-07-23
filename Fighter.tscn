@@ -1426,6 +1426,7 @@ anims/punchL = SubResource( 7 )
 anims/punchR = SubResource( 8 )
 anims/resetLimbs = SubResource( 9 )
 anims/wriggle = SubResource( 10 )
+next/OMT = "idle"
 next/blockHi = "idle"
 next/blockLo = "idle"
 next/kickL = "idle"
@@ -1588,8 +1589,7 @@ __meta__ = {
 }
 
 [node name="Brd" type="Sprite" parent="Skeleton/Torso/neck/head"]
-self_modulate = Color( 1, 1, 1, 0 )
-position = Vector2( -1743.66, -2284.28 )
+position = Vector2( 24.4103, -150.435 )
 scale = Vector2( 0.850926, 0.850926 )
 texture = ExtResource( 16 )
 offset = Vector2( 0, -250 )

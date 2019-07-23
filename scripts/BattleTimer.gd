@@ -4,7 +4,7 @@ extends Node2D
 # var a = 2
 # var b = "text"
 export var fade = 100
-var timePerRound = 7
+var timePerRound = 12
 var timeLeft = timePerRound
 var playerChose = 0
 signal on_timed_attack
@@ -30,13 +30,13 @@ func _process(delta):
 	else:
 		#$Spinner.visible = false
 		$Spinner.modulate.a = 0
-		get_parent().get_node("background")._reset()
+		#get_parent().get_node("background")._reset()
 		
 	
 func triggerAttack():
 	emit_signal("on_timed_attack")
 	if(timePerRound > 1.5):
-		timePerRound *= .82
+		timePerRound *= .9
 	timeLeft = timePerRound+1
 	playerChose = 0
 	

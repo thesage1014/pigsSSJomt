@@ -26,12 +26,13 @@ signal on_update_roller
 signal on_player_selected
 signal on_send_attack
 var removingMove = false
+var sendingAttack = false
 #export(NodePath) onready var timer = get_node("Timer")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#moveCount = MoveList.size() -1 # for some reason it counts size from 1 but calls array members from 0, so calling array[array.size] causes a crash
 	#print("move count: ", moveCount)
-	var animList = get_node("Skeleton/AnimationPlayer").get_animation_list()
+	#var animList = get_node("Skeleton/AnimationPlayer").get_animation_list()
 	#MoveList = animList
 
 	if playerNumber == 1 :
@@ -64,7 +65,10 @@ func sendAttack():
 	if MoveList.size() > 0:
 		#print(MoveList)
 		if MoveList[0][0] == "OMT":
-			MoveList = [
+			print("omt")
+			$Skeleton/AnimationPlayer.clear_queue()
+			self.get_node("Skeleton/AnimationPlayer").current_animation = "OMT"
+			self.MoveList = [
 				['punchR','Lo Punch',30],
 				['punchL','Hi Punch',50],
 				['blockHi','Hi Block',0],
@@ -72,12 +76,13 @@ func sendAttack():
 				['kickR','Hi Kick',50],
 				['kickL','Lo Kick',30]
 				]
-			hitPoints += 100.0
+			self.hitPoints = 100.0
 		else:
 			enemy.TakeDamage(MoveList[nextMove][2])
 		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove][0]
+		
 		removingMove = true
-		if MoveList.size() == 0 or hitPoints <= 0:
+		if MoveList.size() == 1 or hitPoints <= 0:
 			if !alreadyResurrected:
 				MoveList.append(OMTAnim)
 				alreadyResurrected = true
@@ -109,8 +114,11 @@ func _process(delta):
 	if(removingMove):
 		MoveList.remove(nextMove)
 		removingMove = false
+	if(sendingAttack):
+		sendAttack()
+		sendingAttack = false
 	CheckLength()
 	emit_signal("on_update_roller",MoveList,nextMove)
 
 func _on_Timer_on_timed_attack():
-	sendAttack()
+	sendingAttack = true
