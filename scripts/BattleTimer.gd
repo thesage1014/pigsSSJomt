@@ -30,7 +30,7 @@ func _process(delta):
 	else:
 		#$Spinner.visible = false
 		$Spinner.modulate.a = 0
-		#get_parent().get_node("background")._reset()
+		get_parent().get_node("background")._reset()
 		
 	
 func triggerAttack():

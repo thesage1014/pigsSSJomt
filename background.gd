@@ -10,6 +10,7 @@ onready var blue_pos_reset = $bg_b.rect_position
 
 export var magnitude = 100
 export var rotation_magnitude = 0.25
+export var reset = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -58,12 +59,13 @@ func _input(event):
 	
 	
 func _reset() :
-	$bg_r.rect_position = red_pos_reset
-	$bg_g.rect_position = red_pos_reset
-	$bg_b.rect_position = red_pos_reset
-	$bg_r.rect_rotation = 0
-	$bg_g.rect_rotation = 0
-	$bg_b.rect_rotation = 0
+	if reset :
+		$bg_r.rect_position = red_pos_reset
+		$bg_g.rect_position = red_pos_reset
+		$bg_b.rect_position = red_pos_reset
+		$bg_r.rect_rotation = 0
+		$bg_g.rect_rotation = 0
+		$bg_b.rect_rotation = 0
 
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
