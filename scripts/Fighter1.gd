@@ -14,7 +14,7 @@ var MoveList = [
 				['kickL','Lo Kick',30]
 				]
 var WriggleAnim = ['wriggle','wriggle',0]
-var OMTAnim = ['One More Time','One More Time', 0]
+var OMTAnim = ['OMT','One More Time', 0]
 onready var hpStartSize = get_node("HealthBar").rect_size
 export(NodePath) onready var enemy = get_node(enemy)
 export var playerNumber = 1
@@ -62,7 +62,7 @@ func sendAttack():
 	alreadySelected = false
 	if MoveList.size() > 0:
 		#print(MoveList)
-		if MoveList[0][0] == "One More Time":
+		if MoveList[0][0] == "OMT":
 			MoveList = [
 				['punchR','Lo Punch',30],
 				['punchL','Hi Punch',50],
