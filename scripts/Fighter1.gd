@@ -98,7 +98,8 @@ func TakeDamage(damage):
 	else:
 		get_node("HealthBar").visible = true
 		get_node("HealthBar").rect_size = hpStartSize * Vector2(hitPoints/100.0,1)
-	print(hpStartSize * Vector2(hitPoints/100,1))
+	#print(hpStartSize * Vector2(hitPoints/100,1))
+	print(hitPoints)
 	return hitPoints
 	
 func _process(delta):

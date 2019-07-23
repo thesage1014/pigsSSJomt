@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/you need me loop.ogg-081cf5f23d1bf703b41958dcd5eb2cc3.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/you need me loop.ogg"
+dest_files=[ "res://.import/you need me loop.ogg-081cf5f23d1bf703b41958dcd5eb2cc3.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
