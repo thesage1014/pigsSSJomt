@@ -1588,7 +1588,7 @@ __meta__ = {
 }
 
 [node name="Brd" type="Sprite" parent="Skeleton/Torso/neck/head"]
-position = Vector2( 24.4103, -150.435 )
+position = Vector2( -393.074, -618.013 )
 scale = Vector2( 0.850926, 0.850926 )
 texture = ExtResource( 16 )
 offset = Vector2( 0, -250 )

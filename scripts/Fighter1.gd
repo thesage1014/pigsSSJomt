@@ -19,6 +19,7 @@ onready var hpStartSize = get_node("HealthBar").rect_size
 export(NodePath) onready var enemy = get_node(enemy)
 export var playerNumber = 1
 export var hitPoints = 100.0
+export var dead = false
 var btn = []
 var alreadySelected = false
 var alreadyResurrected = false
@@ -62,7 +63,7 @@ func sendAttack():
 	CheckLength()
 	emit_signal("on_send_attack")
 	alreadySelected = false
-	if MoveList.size() > 0:
+	if MoveList.size() > 0 && !dead:
 		#print(MoveList)
 		if MoveList[nextMove][0] == "OMT":
 			print("omt")
@@ -77,6 +78,7 @@ func sendAttack():
 				['kickL','Lo Kick',30]
 				]
 			self.TakeDamage(OMTAnim)
+			alreadyResurrected = true
 		else:
 			enemy.TakeDamage(MoveList[nextMove])
 			anim.current_animation = MoveList[nextMove][0]
@@ -85,7 +87,26 @@ func sendAttack():
 		if MoveList.size() == 1 or hitPoints <= 0:
 			if !alreadyResurrected:
 				MoveList.append(OMTAnim)
-				alreadyResurrected = true
+				
+				
+	else:
+		MoveList = [
+		["idle", "GAME", 0],
+		["idle", "OVER", 0],
+		["idle", "...", 0],
+		["idle", "Thanks", 0],
+		["idle", "for", 0],
+		["idle", "playing!", 0],
+		["idle", "You really", 0],
+		["idle", "did a good", 0],
+		["idle", "job, and", 0],
+		["idle", "you shouldn't", 0],
+		["wriggle", "feel bad", 0],
+		["idle", "even though", 0],
+		["idle", "you lost", 0],
+		
+		]
+
 	
 func CheckLength():
 	if MoveList.size() == 0:
@@ -112,12 +133,15 @@ func TakeDamage(attack):
 			damage = 0
 	print_debug("player ", playerNumber, " taking ", damage, "damage!")
 	hitPoints -= damage
-	clamp(damage,0, 100)
-#	if hitPoints <= 0:
+	
+	if hitPoints <= 0 && alreadyResurrected:
+		dead = true
 #		get_node("HealthBar").visible = false
 #	else:
 #		get_node("HealthBar").visible = true
 		#get_node("HealthBar").rect_size = hpStartSize * Vector2(hitPoints/100.0,1)
+	
+	hitPoints = clamp(hitPoints,0, 100)
 	get_node("HealthBar").rect_size.x = hitPoints*10
 	#print(hpStartSize * Vector2(hitPoints/100,1))
 	print("player ", playerNumber, " has ", hitPoints, "hp")
