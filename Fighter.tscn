@@ -1392,11 +1392,10 @@ margin_right = 1000.0
 margin_bottom = -700.0
 rect_scale = Vector2( 0.8, 0.5 )
 texture = ExtResource( 2 )
-patch_margin_left = 170
-patch_margin_top = 43
-patch_margin_right = 170
-patch_margin_bottom = 43
-axis_stretch_vertical = 2
+region_rect = Rect2( 0, 42, 512, 44 )
+patch_margin_left = 175
+patch_margin_right = 178
+axis_stretch_horizontal = 2
 
 [node name="AttackRoller" parent="." instance=ExtResource( 3 )]
 margin_left = 311.185

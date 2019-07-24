@@ -4,29 +4,32 @@ extends Node2D
 # var a = 2
 # var b = "text"
 export var fade = 100
-var timePerRound = 12
-var timeLeft = timePerRound
+export var setTimePerRound = 12
+export var force_timer = 0
+var timeLeft = setTimePerRound
+var timePerRound = setTimePerRound
 var playerChose = 0
 signal on_timed_attack
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	fade = 100
-	timePerRound = 12
+	timePerRound = setTimePerRound
 	playerChose = 0
 	$Spinner.modulate.a = 0
 	timeLeft = timePerRound
 
 func _input(event):
 	if event.is_action("reset"): 
-		get_parent().get_node("one_more_time").play(0)
-		#get_node("bgm").play(0)
-		_ready()
+		get_tree().reload_current_scene()
+#		get_parent().get_node("one_more_time").play(0)
+#		#get_node("bgm").play(0)
+#		_ready()
 		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	timeLeft -= delta * (playerChose+1)
+	timeLeft -= delta * (playerChose + force_timer)
 	
 	get_node("Label").text = str(int(timeLeft+1))
 	if(timeLeft <= 0):
@@ -41,7 +44,7 @@ func _process(delta):
 	else:
 		#$Spinner.visible = false
 		$Spinner.modulate.a = 0
-		timePerRound = 12
+		timePerRound = setTimePerRound
 		get_parent().get_node("background").reset()
 		
 	
@@ -49,7 +52,7 @@ func triggerAttack():
 	emit_signal("on_timed_attack")
 	if(timePerRound > 1.5):
 		timePerRound *= .3
-	timeLeft = timePerRound+1
+	timeLeft = setTimePerRound+1
 	playerChose = 0
 	
 

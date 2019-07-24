@@ -28,6 +28,7 @@ signal on_player_selected
 signal on_send_attack
 var removingMove = false
 var sendingAttack = false
+var backgroundNode
 
 onready var anim = $Skeleton/AnimationPlayer
 onready var healthBar = $HealthBar
@@ -40,6 +41,7 @@ func _ready():
 		btn = ['p1_a','p1_b','p1_c']
 	elif playerNumber == 2:
 		btn = ['p2_a','p2_b','p2_c']
+	backgroundNode = get_parent().get_node("background")
 	#reset pose
 	reset()
 	
@@ -141,7 +143,7 @@ func TakeDamage(attack):
 	
 	if hitPoints <= 0 && alreadyResurrected:
 		dead = true
-		get_node("./background").reset
+		backgroundNode.reset_chroma = false
 		healthBar.visible = false
 #	else:
 #		get_node("HealthBar").visible = true

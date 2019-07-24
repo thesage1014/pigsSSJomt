@@ -8,9 +8,9 @@ onready var red_pos_reset = $bg_r.rect_position
 onready var green_pos_reset = $bg_g.rect_position
 onready var blue_pos_reset = $bg_b.rect_position
 
-export var magnitude = 100
+export var magnitude = 10
 export var rotation_magnitude = 0.25
-export var reset = true
+export var reset_chroma = true
 
 
 # Called when the node enters the scene tree for the first time.
@@ -59,7 +59,7 @@ func _input(event):
 	if event.is_action("reset"): reset()
 	
 func reset() :
-	if reset :
+	if reset_chroma :
 		$bg_r.rect_position = red_pos_reset
 		$bg_g.rect_position = red_pos_reset
 		$bg_b.rect_position = red_pos_reset
