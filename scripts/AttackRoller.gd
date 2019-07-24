@@ -15,6 +15,15 @@ func _ready():
 		rect_scale *= Vector2(-1,1)
 
 
+func reset():
+	get_node("UpAttack").visible = true
+	modulate.a = 1
+	get_node("DownAttack").visible = true
+
+
+func _input(event):
+	if event.is_action_released("reset"): 
+		reset()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
@@ -26,13 +35,13 @@ func update_roller(attacks, newAttack):
 	get_node("ActiveAttack").text = activeAttack
 	#print(get_node("ActiveAttack").get_parent().name)
 	if(newAttack >= attacks.size()-1):
-		get_node("UpAttack").text = attacks[0][1]
+		get_node("DownAttack").text = attacks[0][1]
 	else:
-		get_node("UpAttack").text = attacks[newAttack+1][1]
+		get_node("DownAttack").text = attacks[newAttack+1][1]
 	if(newAttack <= 0):
-		get_node("DownAttack").text = attacks[attacks.size()-1][1]
+		get_node("UpAttack").text = attacks[attacks.size()-1][1]
 	else:
-		get_node("DownAttack").text = attacks[newAttack-1][1]
+		get_node("UpAttack").text = attacks[newAttack-1][1]
 
 
 func _on_Fighter1_on_player_selected():
@@ -42,6 +51,7 @@ func _on_Fighter1_on_player_selected():
 
 
 func _on_Fighter1_on_send_attack():
-	get_node("UpAttack").visible = true
-	modulate.a = 1
-	get_node("DownAttack").visible = true
+	reset()
+#	get_node("UpAttack").visible = true
+#	modulate.a = 1
+#	get_node("DownAttack").visible = true

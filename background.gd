@@ -56,9 +56,9 @@ func _input(event):
 		var y = b_pos.y
 		$bg_b.set("rect_position", Vector2(newx, y))
 		$bg_b.rect_rotation += -rotation_magnitude
+	if event.is_action("reset"): reset()
 	
-	
-func _reset() :
+func reset() :
 	if reset :
 		$bg_r.rect_position = red_pos_reset
 		$bg_g.rect_position = red_pos_reset

@@ -155,7 +155,7 @@ scale = Vector2( -1, 1 )
 enemy = NodePath("../Fighter1")
 playerNumber = 2
 
-[node name="one more time sound" type="AudioStreamPlayer" parent="."]
+[node name="one_more_time" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 autoplay = true
 
@@ -163,7 +163,7 @@ autoplay = true
 stream = ExtResource( 9 )
 volume_db = -9.286
 autoplay = true
-[connection signal="on_timed_attack" from="Timer" to="Fighter2" method="_on_Timer_on_timed_attack"]
 [connection signal="on_timed_attack" from="Timer" to="Fighter1" method="_on_Timer_on_timed_attack"]
+[connection signal="on_timed_attack" from="Timer" to="Fighter2" method="_on_Timer_on_timed_attack"]
 [connection signal="on_player_selected" from="Fighter1" to="Timer" method="_on_Fighter1_on_player_selected"]
 [connection signal="on_player_selected" from="Fighter2" to="Timer" method="_on_Fighter2_on_player_selected"]

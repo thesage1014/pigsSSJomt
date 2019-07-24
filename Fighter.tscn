@@ -1386,7 +1386,7 @@ position = Vector2( -199.445, -6.64807 )
 script = ExtResource( 1 )
 
 [node name="HealthBar" type="NinePatchRect" parent="."]
-modulate = Color( 1, 0, 0.113725, 1 )
+modulate = Color( 0, 0.784314, 0.117647, 1 )
 margin_top = -900.0
 margin_right = 1000.0
 margin_bottom = -700.0

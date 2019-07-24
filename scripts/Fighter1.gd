@@ -30,6 +30,7 @@ var removingMove = false
 var sendingAttack = false
 
 onready var anim = $Skeleton/AnimationPlayer
+onready var healthBar = $HealthBar
 #export(NodePath) onready var timer = get_node("Timer")
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -40,10 +41,14 @@ func _ready():
 	elif playerNumber == 2:
 		btn = ['p2_a','p2_b','p2_c']
 	#reset pose
-	anim.current_animation = "resetLimbs"
+	reset()
+	
 	
 
+
+				
 func _input(event):
+	if event.is_action("reset"): reset()
 	CheckLength()
 	if  MoveList.size() > 0 && event.is_action_pressed(btn[0]) :
 		alreadySelected = true
@@ -51,12 +56,11 @@ func _input(event):
 		
 	if(not alreadySelected):
 		if event.is_action_released(btn[1]):
-			nextMove += 1
-		elif event.is_action_released(btn[2]):
 			nextMove -= 1
-
-
+		elif event.is_action_released(btn[2]):
+			nextMove += 1
 	CheckLength()
+
 
 func sendAttack():
 	print_debug(playerNumber, " throwing ", MoveList[nextMove][1])
@@ -107,7 +111,7 @@ func sendAttack():
 		
 		]
 
-	
+
 func CheckLength():
 	if MoveList.size() == 0:
 		MoveList.append(WriggleAnim)
@@ -117,7 +121,8 @@ func CheckLength():
 		nextMove = 0
 	elif nextMove < 0:
 		nextMove = MoveList.size()-1
-	
+
+
 func TakeDamage(attack):
 	var enemyAttack = attack[1]
 	var damage = attack[2]
@@ -136,17 +141,21 @@ func TakeDamage(attack):
 	
 	if hitPoints <= 0 && alreadyResurrected:
 		dead = true
-#		get_node("HealthBar").visible = false
+		get_node("./background").reset
+		healthBar.visible = false
 #	else:
 #		get_node("HealthBar").visible = true
 		#get_node("HealthBar").rect_size = hpStartSize * Vector2(hitPoints/100.0,1)
 	
 	hitPoints = clamp(hitPoints,0, 100)
-	get_node("HealthBar").rect_size.x = hitPoints*10
+	healthBar.rect_size.x = hitPoints*10
+	healthBar.modulate.r = hitPoints/100
+	healthBar.modulate.g = -hitPoints/100
 	#print(hpStartSize * Vector2(hitPoints/100,1))
 	print("player ", playerNumber, " has ", hitPoints, "hp")
 	return hitPoints
-	
+
+
 func _process(delta):
 	anim.playback_speed = rand_range(.8,1.7)
 	if(removingMove):
@@ -158,5 +167,28 @@ func _process(delta):
 	CheckLength()
 	emit_signal("on_update_roller",MoveList,nextMove)
 
+
 func _on_Timer_on_timed_attack():
 	sendingAttack = true
+		
+
+
+func reset():
+	hitPoints = 100.0
+	dead = false
+	alreadySelected = false
+	alreadyResurrected = false
+	removingMove = false
+	sendingAttack = false
+	anim.current_animation = "resetLimbs"
+	MoveList = [
+				['punchR','Lo Punch',30],
+				['punchL','Hi Punch',50],
+				['blockHi','Hi Block',0],
+				['blockLo','Lo Block',0],
+				['kickR','Hi Kick',50],
+				['kickL','Lo Kick',30]
+				]
+	healthBar.rect_size.x = hitPoints*10
+	healthBar.modulate.r = hitPoints/100
+	healthBar.modulate.g = -hitPoints/100

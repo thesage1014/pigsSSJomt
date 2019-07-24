@@ -10,7 +10,18 @@ var playerChose = 0
 signal on_timed_attack
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	fade = 100
+	timePerRound = 12
+	playerChose = 0
+	$Spinner.modulate.a = 0
+	timeLeft = timePerRound
+
+func _input(event):
+	if event.is_action("reset"): 
+		get_parent().get_node("one_more_time").play(0)
+		#get_node("bgm").play(0)
+		_ready()
+		
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,7 +42,7 @@ func _process(delta):
 		#$Spinner.visible = false
 		$Spinner.modulate.a = 0
 		timePerRound = 12
-		get_parent().get_node("background")._reset()
+		get_parent().get_node("background").reset()
 		
 	
 func triggerAttack():
