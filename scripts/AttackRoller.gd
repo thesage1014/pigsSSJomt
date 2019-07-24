@@ -11,7 +11,7 @@ export(NodePath) onready var player = get_node(player)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player.connect("on_update_roller", self, "update_roller")
-	if(player.playerNumber == 1):
+	if(player.playerNumber == 2):
 		rect_scale *= Vector2(-1,1)
 
 

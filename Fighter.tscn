@@ -1387,12 +1387,10 @@ script = ExtResource( 1 )
 
 [node name="HealthBar" type="NinePatchRect" parent="."]
 modulate = Color( 1, 0, 0.113725, 1 )
-margin_left = -1071.0
-margin_top = -805.0
-margin_right = -301.0
-margin_bottom = -615.0
-rect_scale = Vector2( -1, -1 )
-rect_pivot_offset = Vector2( 886.182, -0.675842 )
+margin_top = -900.0
+margin_right = 1000.0
+margin_bottom = -700.0
+rect_scale = Vector2( 0.8, 0.5 )
 texture = ExtResource( 2 )
 patch_margin_left = 170
 patch_margin_top = 43
@@ -1405,6 +1403,7 @@ margin_left = 311.185
 margin_top = -504.577
 margin_right = 731.185
 margin_bottom = -411.577
+rect_scale = Vector2( 1, 1 )
 rect_pivot_offset = Vector2( 203.903, 44.2925 )
 player = NodePath("..")
 

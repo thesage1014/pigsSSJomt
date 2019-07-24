@@ -30,13 +30,14 @@ func _process(delta):
 	else:
 		#$Spinner.visible = false
 		$Spinner.modulate.a = 0
+		timePerRound = 12
 		get_parent().get_node("background")._reset()
 		
 	
 func triggerAttack():
 	emit_signal("on_timed_attack")
 	if(timePerRound > 1.5):
-		timePerRound *= .9
+		timePerRound *= .3
 	timeLeft = timePerRound+1
 	playerChose = 0
 	

@@ -14,7 +14,7 @@ var MoveList = [
 				['kickL','Lo Kick',30]
 				]
 var WriggleAnim = ['wriggle','wriggle',0]
-var OMTAnim = ['OMT','One More Time', 0]
+var OMTAnim = ['OMT','One More Time', -100]
 onready var hpStartSize = get_node("HealthBar").rect_size
 export(NodePath) onready var enemy = get_node(enemy)
 export var playerNumber = 1
@@ -27,21 +27,20 @@ signal on_player_selected
 signal on_send_attack
 var removingMove = false
 var sendingAttack = false
+
+onready var anim = $Skeleton/AnimationPlayer
 #export(NodePath) onready var timer = get_node("Timer")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#moveCount = MoveList.size() -1 # for some reason it counts size from 1 but calls array members from 0, so calling array[array.size] causes a crash
-	#print("move count: ", moveCount)
-	#var animList = get_node("Skeleton/AnimationPlayer").get_animation_list()
-	#MoveList = animList
-
+	
+	#Set inputs per player
 	if playerNumber == 1 :
 		btn = ['p1_a','p1_b','p1_c']
 	elif playerNumber == 2:
-#		get_node("Skeleton/Torso/neck/head").frame = 1
 		btn = ['p2_a','p2_b','p2_c']
 	#reset pose
-	get_node("Skeleton/AnimationPlayer").current_animation = "resetLimbs"
+	anim.current_animation = "resetLimbs"
+	
 
 func _input(event):
 	CheckLength()
@@ -59,15 +58,16 @@ func _input(event):
 	CheckLength()
 
 func sendAttack():
+	print_debug(playerNumber, " throwing ", MoveList[nextMove][1])
 	CheckLength()
 	emit_signal("on_send_attack")
 	alreadySelected = false
 	if MoveList.size() > 0:
 		#print(MoveList)
-		if MoveList[0][0] == "OMT":
+		if MoveList[nextMove][0] == "OMT":
 			print("omt")
-			$Skeleton/AnimationPlayer.clear_queue()
-			self.get_node("Skeleton/AnimationPlayer").current_animation = "OMT"
+			anim.clear_queue()
+			anim.current_animation = "OMT"
 			self.MoveList = [
 				['punchR','Lo Punch',30],
 				['punchL','Hi Punch',50],
@@ -76,10 +76,10 @@ func sendAttack():
 				['kickR','Hi Kick',50],
 				['kickL','Lo Kick',30]
 				]
-			self.hitPoints = 100.0
+			self.TakeDamage(OMTAnim)
 		else:
-			enemy.TakeDamage(MoveList[nextMove][2])
-		get_node("Skeleton/AnimationPlayer").current_animation = MoveList[nextMove][0]
+			enemy.TakeDamage(MoveList[nextMove])
+			anim.current_animation = MoveList[nextMove][0]
 		
 		removingMove = true
 		if MoveList.size() == 1 or hitPoints <= 0:
@@ -90,27 +90,41 @@ func sendAttack():
 func CheckLength():
 	if MoveList.size() == 0:
 		MoveList.append(WriggleAnim)
-		nextMove = 0
-	else:
-		if nextMove > MoveList.size()-1:
-			nextMove = 0
-		elif nextMove < 0:
-			nextMove = MoveList.size()-1
+#		nextMove = 0
 	
-func TakeDamage(damage):
-	if(not MoveList[nextMove][0].begins_with("block")):
-		hitPoints -= damage
-	if hitPoints <= 0:
-		get_node("HealthBar").visible = false
-	else:
-		get_node("HealthBar").visible = true
-		get_node("HealthBar").rect_size = hpStartSize * Vector2(hitPoints/100.0,1)
+	if nextMove > MoveList.size()-1:
+		nextMove = 0
+	elif nextMove < 0:
+		nextMove = MoveList.size()-1
+	
+func TakeDamage(attack):
+	var enemyAttack = attack[1]
+	var damage = attack[2]
+	var myAttack = MoveList[nextMove][1]
+	#if(not MoveList[nextMove][0].begins_with("block")):
+	print_debug("player ", playerNumber, " facing ", damage, "damage from a ", enemyAttack)
+	if myAttack.ends_with("Block"):
+		if myAttack.begins_with("Hi") && enemyAttack.begins_with("Hi"):
+			print_debug("player ", playerNumber, "blocking High!")
+			damage = 0
+		if myAttack.begins_with("Lo") && enemyAttack.begins_with("Lo"):
+			print_debug("player ", playerNumber, "blocking High!")
+			damage = 0
+	print_debug("player ", playerNumber, " taking ", damage, "damage!")
+	hitPoints -= damage
+	clamp(damage,0, 100)
+#	if hitPoints <= 0:
+#		get_node("HealthBar").visible = false
+#	else:
+#		get_node("HealthBar").visible = true
+		#get_node("HealthBar").rect_size = hpStartSize * Vector2(hitPoints/100.0,1)
+	get_node("HealthBar").rect_size.x = hitPoints*10
 	#print(hpStartSize * Vector2(hitPoints/100,1))
 	print("player ", playerNumber, " has ", hitPoints, "hp")
 	return hitPoints
 	
 func _process(delta):
-	get_node("Skeleton/AnimationPlayer").playback_speed = rand_range(.8,1.7)
+	anim.playback_speed = rand_range(.8,1.7)
 	if(removingMove):
 		MoveList.remove(nextMove)
 		removingMove = false
